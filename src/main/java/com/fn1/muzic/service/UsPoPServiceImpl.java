@@ -43,7 +43,7 @@ public class UsPoPServiceImpl implements MusicChartSerice {
 
 	@PostConstruct
 	public void init() {
-		this.getSongs();
+		//this.getSongs();
 	}
 
 	@SuppressWarnings("unchecked")
