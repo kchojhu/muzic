@@ -19,14 +19,20 @@ gulp.task('serve', function() {
 	var options = {
 			proxy: 'localhost:8080',
 			port: 4000,
-			files:['src/main/resources/public/index.jsp', 'target/classes/**/*.class', 'src/main/resources/public/**/*.js', 'src/main/resources/public/**/*.css'],
-			reloadDelay:1000,
+			files:['src/main/webapp/index.html', 'target/classes/**/*.class', 'src/main/webapp/app/**/*.js', 'src/main/resources/public/**/*.css'],
+			reloadDelay:2000,
 			logLevel: 'debug',
-			injectChange: true,
+			
+//			injectChange: true,
 			logFileChange: true,
 			logPrefix: 'gulp-patterns',
 			notify:true
 	};
 	browserSync(options);
+	
+	//gulp.watch([].concat.apply(config.indexFile), browserSync.reload);
+	gulp.watch('src/main/webapp/index.html', function() {
+		browserSync.reload({stream:false});
+	});
 });
 

@@ -24,7 +24,7 @@ System.register(["angular2/platform/browser", "angular2/core"], function(exports
                 HelloWorld = __decorate([
                     core_1.Component({
                         selector: 'hello-world',
-                        template: "\n  <div>\n    Hello world!!!!1239000000123456\n  </div>\n  "
+                        template: "\n  <div>\n    Good bye world!!!!OK Why?!!1\n  </div>\n  "
                     })
                 ], HelloWorld);
                 return HelloWorld;

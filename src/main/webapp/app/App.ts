@@ -1,5 +1,5 @@
-/// <reference path="../../../../../node_modules/angular2/ts/typings/node/node.d.ts"/>
-/// <reference path="../../../../../node_modules/angular2/typings/browser.d.ts"/>
+/// <reference path="../../../../node_modules/angular2/ts/typings/node/node.d.ts"/>
+/// <reference path="../../../../node_modules/angular2/typings/browser.d.ts"/>
 import { bootstrap } from "angular2/platform/browser";
 import { Component } from "angular2/core";
 
@@ -7,7 +7,7 @@ import { Component } from "angular2/core";
   selector: 'hello-world',
   template: `
   <div>
-    Hello world!!!!1239000000123456
+    Good bye world!!!!OK Why?!!1
   </div>
   `
 })
