@@ -6,6 +6,7 @@ import { Component, AfterViewInit } from "angular2/core";
 @Component({
   selector: 'hello-world',
   template: `
+<<<<<<< HEAD
 <div id="swipeme" class="main">
 <!--      <div id="swipeme-left" class="panel panel-left">Left off-canvas</div>-->
     <div id="swipeme-main" class="panel panel-main">
@@ -14,6 +15,12 @@ import { Component, AfterViewInit } from "angular2/core";
     <div id="swipeme-right" class="panel panel-right">Right off-canvas</div>
 </div>
   `
+=======
+  <div>
+    Good bye world!!!!OK Why?!!1
+  </div>
+  ` 
+>>>>>>> f5c8084d36e190ed6a7d8663075ca11ecc715d15
 })
 export class App implements AfterViewInit{
     ngAfterViewInit() {

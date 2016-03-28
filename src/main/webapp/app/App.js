@@ -52,7 +52,7 @@ System.register(["angular2/platform/browser", "angular2/core"], function(exports
                 App = __decorate([
                     core_1.Component({
                         selector: 'hello-world',
-                        template: "\n<div id=\"swipeme\" class=\"main\">\n<!--      <div id=\"swipeme-left\" class=\"panel panel-left\">Left off-canvas</div>-->\n    <div id=\"swipeme-main\" class=\"panel panel-main\">\n    Just Testing\n    </div>\n    <div id=\"swipeme-right\" class=\"panel panel-right\">Right off-canvas</div>\n</div>\n  "
+                        template: "\n<<<<<<< HEAD\n<div id=\"swipeme\" class=\"main\">\n<!--      <div id=\"swipeme-left\" class=\"panel panel-left\">Left off-canvas</div>-->\n    <div id=\"swipeme-main\" class=\"panel panel-main\">\n    Just Testing\n    </div>\n    <div id=\"swipeme-right\" class=\"panel panel-right\">Right off-canvas</div>\n</div>\n  "
                     })
                 ], App);
                 return App;
