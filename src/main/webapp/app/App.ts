@@ -9,7 +9,7 @@ import { Component } from "angular2/core";
   <div>
     Good bye world!!!!OK Why?!!1
   </div>
-  `
+  ` 
 })
 class HelloWorld {
 }

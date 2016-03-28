@@ -14,6 +14,9 @@ local.properties
 .project
 node_modules
 
+src/main/webapp/app/code/**/*.js
+src/main/webapp/app/code/**/*.js.map
+
 target
 .gitignore~
 # External tool builders
