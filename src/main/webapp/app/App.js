@@ -8,7 +8,7 @@ System.register(["angular2/platform/browser", "angular2/core"], function(exports
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var browser_1, core_1;
-    var HelloWorld;
+    var App;
     return {
         setters:[
             function (browser_1_1) {
@@ -18,18 +18,47 @@ System.register(["angular2/platform/browser", "angular2/core"], function(exports
                 core_1 = core_1_1;
             }],
         execute: function() {
-            HelloWorld = (function () {
-                function HelloWorld() {
+            App = (function () {
+                function App() {
                 }
-                HelloWorld = __decorate([
+                App.prototype.ngAfterViewInit = function () {
+                    var swipe = new SwipeMe(document.getElementById('swipeme'), {
+                        accessClasses: {
+                            left: 'pull-right',
+                            right: 'pull-left'
+                        }
+                    });
+                    function triggerLeft(event) {
+                        if (document.getElementById('swipeme').className.indexOf('pull-right') === -1) {
+                            swipe.swipe('right');
+                        }
+                        else {
+                            swipe.swipe('left');
+                        }
+                        if (event.preventDefault)
+                            event.preventDefault();
+                    }
+                    function triggerRight(event) {
+                        if (document.getElementById('swipeme').className.indexOf('pull-left') === -1) {
+                            swipe.swipe('left');
+                        }
+                        else {
+                            swipe.swipe('right');
+                        }
+                        if (event.preventDefault)
+                            event.preventDefault();
+                    }
+                };
+                App = __decorate([
                     core_1.Component({
                         selector: 'hello-world',
-                        template: "\n  <div>\n    Good bye world!!!!OK Why?!!1\n  </div>\n  "
+                        template: "\n<div id=\"swipeme\" class=\"main\">\n<!--      <div id=\"swipeme-left\" class=\"panel panel-left\">Left off-canvas</div>-->\n    <div id=\"swipeme-main\" class=\"panel panel-main\">\n    Just Testing\n    </div>\n    <div id=\"swipeme-right\" class=\"panel panel-right\">Right off-canvas</div>\n</div>\n  "
                     })
-                ], HelloWorld);
-                return HelloWorld;
+                ], App);
+                return App;
             }());
-            browser_1.bootstrap(HelloWorld);
+            exports_1("App", App);
+            browser_1.bootstrap(App);
         }
     }
 });

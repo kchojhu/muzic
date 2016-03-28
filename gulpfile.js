@@ -22,8 +22,8 @@ gulp.task('serve', function() {
 			files:['src/main/webapp/index.html', 'target/classes/**/*.class', 'src/main/webapp/app/**/*.js', 'src/main/resources/public/**/*.css'],
 			reloadDelay:2000,
 			logLevel: 'debug',
-			
-//			injectChange: true,
+			browsers: 'google chrome',
+			injectChange: true,
 			logFileChange: true,
 			logPrefix: 'gulp-patterns',
 			notify:true
@@ -31,7 +31,7 @@ gulp.task('serve', function() {
 	browserSync(options);
 	
 	//gulp.watch([].concat.apply(config.indexFile), browserSync.reload);
-	gulp.watch('src/main/webapp/index.html', function() {
+	gulp.watch('src/main/webapp/app/**/*.js', function() {
 		browserSync.reload({stream:false});
 	});
 });

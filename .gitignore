@@ -10,6 +10,8 @@ local.properties
 .loadpath
 .recommenders
 
+*.d.ts
+
 # Eclipse Core
 .project
 node_modules
