@@ -8,6 +8,17 @@ public class Song implements Serializable{
 	private String songName;
 	private Integer rank;
 	private Integer duration;
+	private String image;
+
+	
+	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public Integer getDuration() {
 		return duration;

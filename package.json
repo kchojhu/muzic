@@ -17,10 +17,11 @@
   },
   "homepage": "https://github.com/kchojhu/muzic#readme",
   "devDependencies": {
-    "angular2": "2.0.0-beta.10",
+    "angular2": "2.0.0-beta.11",
     "browser-sync": "^2.11.1",
     "del": "^2.2.0",
-    "es6-shim": "^0.33.13",
+    "es6-promise": "^3.1.2",
+    "es6-shim": "^0.35.0",
     "glob": "^7.0.3",
     "gulp": "^3.9.1",
     "gulp-load-plugins": "^1.2.0",

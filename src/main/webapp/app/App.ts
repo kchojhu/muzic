@@ -1,22 +1,31 @@
 /// <reference path="../../../../node_modules/angular2/ts/typings/node/node.d.ts"/>
 /// <reference path="../../../../node_modules/angular2/typings/browser.d.ts"/>
 import { bootstrap } from "angular2/platform/browser";
-import { Component, AfterViewInit } from "angular2/core";
+import { Component, AfterViewInit, forwardRef } from "angular2/core";
+import { MusicListing } from "./musiclisting/MusicListing";
 
 declare var SwipeMe:any;
+
+
 @Component({
   selector: 'hello-world',
+  directives: [MusicListing],
   template: `
 <div id="swipeme" class="main">
-<!--      <div id="swipeme-left" class="panel panel-left">Left off-canvas</div>-->
     <div id="swipeme-main" class="panel panel-main">
-    Just Testing
+    Hello
+    <music-listing></music-listing>
     </div>
     <div id="swipeme-right" class="panel panel-right">Right off-canvas</div>
 </div>
   `
 })
 export class App implements AfterViewInit{
+        
+    constructor() {
+        console.log('created App');
+    }
+    
     ngAfterViewInit() {
             let swipe = new SwipeMe(
             document.getElementById('swipeme'),

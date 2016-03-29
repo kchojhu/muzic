@@ -110,10 +110,11 @@ public class YoutubeServiceImpl implements YoutubeService {
 					PeriodFormatter formatter = ISOPeriodFormat.standard();
 					Period p = formatter.parsePeriod(listResponse.getItems().get(0).getContentDetails().getDuration());
 					Seconds s = p.toStandardSeconds();
+					Thumbnail thumbnail = (Thumbnail) searchResult.getSnippet().getThumbnails().get("default");
 					
-					if (s.getSeconds() < musicDuration & s.getSeconds() > 120) {
+					if (s.getSeconds() < musicDuration & s.getSeconds() > 120 && s.getSeconds() < 600000) {
 						song.setSongId(rId.getVideoId());
-						
+						song.setImage(thumbnail.getUrl());
 						song.setDuration(s.getSeconds());
 						return song;
 					}
