@@ -1,5 +1,5 @@
 import { Component } from "angular2/core";
-import {Song} from "../model/Song";
+import { Song } from "../model/Song";
 
   //  <li *ngFor="#song of songs">Test{{song.songName}}</li>
 @Component({
