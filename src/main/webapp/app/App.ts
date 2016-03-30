@@ -1,6 +1,6 @@
-import { bootstrap } from "angular2/platform/browser";
-import { Component, AfterViewInit, forwardRef } from "angular2/core";
-import { MusicListing } from "./musiclisting/MusicListing";
+import { bootstrap } from 'angular2/platform/browser';
+import { Component, AfterViewInit, forwardRef } from 'angular2/core';
+import { MusicListing } from './musiclisting/MusicListing';
 
 
 declare var SwipeMe:any;
@@ -11,7 +11,6 @@ declare var SwipeMe:any;
   template: `
 <div id="swipeme" class="main">
     <div id="swipeme-main" class="panel panel-main">
-    Hello
     <music-listing></music-listing>
     </div>
     <div id="swipeme-right" class="panel panel-right">Right off-canvas</div>
@@ -59,4 +58,4 @@ export class App implements AfterViewInit{
     }
 }
 
-bootstrap(App);
+bootstrap(App,[]);

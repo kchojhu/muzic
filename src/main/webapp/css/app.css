@@ -1,3 +1,26 @@
+
+
+.music-listing ol li.selected {
+    background-color: #3a3a3a;
+    cursor: pointer;
+}
+.music-listing ol li {
+    position: relative;
+    vertical-align: middle;
+    overflow: hidden;
+    padding: 12px 0 12px 12px;
+}
+.RYPP .RYPP-items {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 64px;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+
 .main {
 	position: relative;
 	overflow: hidden;

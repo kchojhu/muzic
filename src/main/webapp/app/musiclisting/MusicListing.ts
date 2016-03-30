@@ -1,18 +1,20 @@
-import { Component } from "angular2/core";
-import { Song } from "../model/Song";
+import { Component } from 'angular2/core';
+import { Song } from '../model/Song';
 
-  //  <li *ngFor="#song of songs">Test{{song.songName}}</li>
 @Component({
   selector: 'music-listing',
   template: `
-    what!
+    <ol class="music-listing" >
+        <li *ngFor="#song of songs">
+            <p class="title">{{song.songName}}<small class="author"><br>{{song.artistName}}</small></p><img src="{{song.image}}" class="thumb">
+        </li>
+    </ol>
   `
 })
-export class MusicListing /*implements OnInit*/{
+export class MusicListing {
 
-    songs:Song[] = [];
+    songs:Song[];
     
-    //ngOnInit() {
         
     constructor() {
         this.songs = [];

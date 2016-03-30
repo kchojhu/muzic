@@ -1,41 +1,35 @@
 <!doctype html>
 <html>
-  <head>
-    <title>First App - Hello world</title>
-    <!-- Libraries -->
-    <script src="es6-shim/es6-shim.js"></script>
-<script src="angular2/bundles/angular2-polyfills.js"></script> 
-    <script src="systemjs/dist/system.src.js"></script>
-    <script src="rxjs/bundles/Rx.js"></script>
-    <script src="angular2/bundles/angular2.dev.js"></script>
-    <script type="text/javascript" src="js/swipeme.js"></script>
-	<script type="text/javascript" src="js/swipeme.mouse.js"></script>
-    	<script type="text/javascript" src="js/swipeme.ltie9.js"></script>
+<head>
+<title>First App - Hello world</title>
+<!-- Libraries -->
+<script src="es6-shim/es6-shim.js"></script>
+<script src="angular2/bundles/angular2-polyfills.js"></script>
+<script src="systemjs/dist/system-polyfills.js"></script>
+<script src="systemjs/dist/system.src.js"></script>
+<script src="rxjs/bundles/Rx.js"></script>
+<script src="angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+<script src="angular2/bundles/angular2.dev.js"></script>
+<script type="text/javascript" src="js/swipeme.js"></script>
+<script type="text/javascript" src="js/swipeme.mouse.js"></script>
+<script type="text/javascript" src="js/swipeme.ltie9.js"></script>
+<script src="angular2/bundles/router.dev.js"></script>
+	<script>
+		System.config({
+			packages : {
+				app : {
+					format : 'register',
+					defaultExtension : 'js'
+				}
+			}
+		});
+		System.import('app/App').then(null, console.error.bind(console));
+	</script>
+<!-- Stylesheet -->
+<link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+	<hello-world></hello-world>
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="css/app.css">
-  </head>
-  <body>
-
-    <script>
-   
-    var d = new Date();
-    var n = d.getTime(); 
-      System.config({
-        packages: {        
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-      System.import('app/App.js?d=' + n)
-            .then(null, console.error.bind(console));
-   
-
-    </script>
-
-        <hello-world></hello-world>
-
-  </body>
+</body>
 </html>
