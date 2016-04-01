@@ -10,10 +10,13 @@
 <script src="rxjs/bundles/Rx.js"></script>
 <script src="angular2/es6/dev/src/testing/shims_for_IE.js"></script>
 <script src="angular2/bundles/angular2.dev.js"></script>
+<script src="angular2/bundles/http.dev.js"></script>
 <script type="text/javascript" src="js/swipeme.js"></script>
 <script type="text/javascript" src="js/swipeme.mouse.js"></script>
 <script type="text/javascript" src="js/swipeme.ltie9.js"></script>
 <script src="angular2/bundles/router.dev.js"></script>
+<script src="jquery/dist/jquery.min.js" ></script>
+<script src="bootstrap/dist/js/bootstrap.min.js" ></script>
 	<script>
 		System.config({
 			packages : {
@@ -25,8 +28,10 @@
 		});
 		System.import('app/App').then(null, console.error.bind(console));
 	</script>
+<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">	
 <!-- Stylesheet -->
 <link rel="stylesheet" type="text/css" href="css/app.css">
+
 </head>
 <body>
 	<hello-world></hello-world>

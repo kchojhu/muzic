@@ -18,6 +18,7 @@
   "homepage": "https://github.com/kchojhu/muzic#readme",
   "devDependencies": {
     "angular2": "2.0.0-beta.11",
+    "bootstrap": "^3.3.6",
     "browser-sync": "^2.11.1",
     "del": "^2.2.0",
     "es6-promise": "^3.1.2",
@@ -30,6 +31,7 @@
     "gulp-task-listing": "^1.0.1",
     "gulp-typescript": "^2.12.1",
     "gulp-util": "^3.0.7",
+    "jquery": "^2.2.2",
     "lodash": "^4.6.1",
     "path": "^0.12.7",
     "reflect-metadata": "^0.1.2",

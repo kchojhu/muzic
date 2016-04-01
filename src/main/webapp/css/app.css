@@ -1,3 +1,17 @@
+body {
+	background: #000;
+}
+
+.music-listing .dropdown {
+    padding: 10px 0 0 20px;
+}
+
+.music-listing {
+	background-color: #222;
+	font-size:70%;
+	margin: 0;
+	padding: 0;
+}
 
 
 .music-listing ol li.selected {
@@ -7,18 +21,52 @@
 .music-listing ol li {
     position: relative;
     vertical-align: middle;
-    overflow: hidden;
+//    overflow: hidden;
     padding: 12px 0 12px 12px;
+    color: #fff;
 }
-.RYPP .RYPP-items {
+
+.music-listing ol li > p {
+	color: #cacaca;
+    display: inline-block;
+    float: right;
+    margin: 0;
+    padding: 0 5px 0 0;
+    text-align: left;
+    vertical-align: middle;
+    width: 76%;
+}
+
+.music-listing ol li > img {
+    border: 2px solid transparent;
+    display: inline-block;
+    vertical-align: middle;
+    width: 18%;
+}
+
+/*
+.RYPP .RYPP-playlist > header {
+    background: #222 none repeat scroll 0 0;
+    border-bottom: 1px solid #3a3a3a;
+    border-left: 8px solid #222;
+    border-right: 8px solid #222;
+    height: 64px;
+    padding: 16px 0 0 8px;
     width: 100%;
+    z-index: 2;
+}*/
+
+/*.music-listing {
+    width: 100%;
+    
+    border: 5px solid red; 
     position: absolute;
     left: 0;
     top: 64px;
     right: 0;
     bottom: 0;
     overflow-y: auto;
-}
+}*/
 
 
 .main {
@@ -26,6 +74,8 @@
 	overflow: hidden;
 	width: 100%;
 	font-size: 130%;
+	margin: 0;
+	padding: 0;
 }
 .panel {
 	padding: 20px;
@@ -47,7 +97,7 @@
 	float: left;
 	width: 100%;
 	margin-left: 0;
-	background: #fff;
+	background: #black;
 }
 
 .panel-main .contents {
