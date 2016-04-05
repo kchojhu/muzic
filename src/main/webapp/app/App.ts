@@ -62,4 +62,4 @@ export class App implements AfterViewInit{
     }
 }
 
-bootstrap(App,[]);
+bootstrap(App,[]).catch(err => console.error(err));

@@ -1,11 +1,12 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['angular2/core'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
     var Popup, HostSampleApp3;
@@ -29,10 +30,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         host: {
                             '(click)': 'displayMessage()'
                         }
-                    })
+                    }), 
+                    __metadata('design:paramtypes', [core_1.ElementRef])
                 ], Popup);
                 return Popup;
-            }());
+            })();
             HostSampleApp3 = (function () {
                 function HostSampleApp3() {
                 }
@@ -41,10 +43,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         selector: 'host-sample-app',
                         directives: [Popup],
                         template: "\n  <div class=\"ui message\" popup\n       message=\"Clicked the message\">\n    <div class=\"header\">\n      Learning Directives\n    </div>\n\n    <p>\n      This should use our Popup diretive\n    </p>\n  </div>\n\n  <i class=\"alarm icon\" popup\n     message=\"Clicked the alarm icon\"></i>\n  "
-                    })
+                    }), 
+                    __metadata('design:paramtypes', [])
                 ], HostSampleApp3);
                 return HostSampleApp3;
-            }());
+            })();
             exports_1("HostSampleApp3", HostSampleApp3);
         }
     }

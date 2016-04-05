@@ -1,6 +1,4 @@
-System.register(['angular2/testing', "../mocks/routes", "../mocks/spotify", "../../app/ts/components/TrackComponent"], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['angular2/testing', "../mocks/routes", "../mocks/spotify", "../../app/ts/components/TrackComponent"], function(exports_1) {
     var testing_1, routes_1, spotify_1, TrackComponent_1;
     var mockSpotifyService, mockRouterProvider;
     return {

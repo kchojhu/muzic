@@ -1,6 +1,4 @@
-System.register(['./LargeService', './SmallService'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['./LargeService', './SmallService'], function(exports_1) {
     var LargeService_1, SmallService_1;
     var ViewPortService;
     return {
@@ -23,7 +21,7 @@ System.register(['./LargeService', './SmallService'], function(exports_1, contex
                     return new LargeService_1.LargeService();
                 };
                 return ViewPortService;
-            }());
+            })();
             exports_1("ViewPortService", ViewPortService);
         }
     }

@@ -1,4 +1,5 @@
-import { Component } from 'angular2/core';
+
+import { Component, Inject } from 'angular2/core';
 import { Song } from '../model/Song';
 import { YoutubeService } from '../service/Youtube.service';
 
@@ -33,10 +34,10 @@ export class MusicListing {
     }    
     
     getSongs() {
-        this._youtubeService.getSongs('').subscribe(songs => this.songs = songs);
+        this._youtubeService.getSongs('').subscribe(songs => this.songs = songs, err => console.log(err));
     }
     
-    constructor(private _youtubeService:YoutubeService) {
+    constructor(private  _youtubeService:YoutubeService) {
 //        this.songs = [];
         /*
         console.log('hello');

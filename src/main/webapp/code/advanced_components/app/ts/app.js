@@ -5,14 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-System.register(['angular2/core', 'angular2/platform/browser', 'angular2/router', './app/intro_component', './styling/styling', './host/host', './host/steps/host_01', './host/steps/host_02', './host/steps/host_03', './host/steps/host_04', './tabs/tabs', './lifecycle-hooks/lifecycle_01', './lifecycle-hooks/lifecycle_02', './lifecycle-hooks/lifecycle_03', './lifecycle-hooks/lifecycle_04', './templates/for', './templates/if', './transclusion/transclusion', './change-detection/onpush', './change-detection/observables', './app/sidebar', './assets'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['angular2/core', 'angular2/platform/browser', 'angular2/router', './app/intro_component', './styling/styling', './host/host', './host/steps/host_01', './host/steps/host_02', './host/steps/host_03', './host/steps/host_04', './tabs/tabs', './lifecycle-hooks/lifecycle_01', './lifecycle-hooks/lifecycle_02', './lifecycle-hooks/lifecycle_03', './lifecycle-hooks/lifecycle_04', './templates/for', './templates/if', './transclusion/transclusion', './change-detection/onpush', './change-detection/observables', './app/sidebar', './assets'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, browser_1, router_1, intro_component_1, styling_1, host_1, host_01_1, host_02_1, host_03_1, host_04_1, tabs_1, lifecycle_01_1, lifecycle_02_1, lifecycle_03_1, lifecycle_04_1, for_1, if_1, transclusion_1, onpush_1, observables_1, sidebar_1;
     var examples, AdvancedComponentsApp;
@@ -121,10 +122,11 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/router'
                         selector: 'advanced-components-app',
                         directives: [sidebar_1.SidebarComponent, router_1.ROUTER_DIRECTIVES],
                         template: "\n  <!-- Menu Bar -->\n  <div class=\"ui menu\">\n    <div class=\"ui container\">\n      <a href=\"#\" class=\"header item\">\n        <img class=\"logo\" \n             src=\"" + require('images/logos/ng-book-2-minibook.png') + "\" />\n        ng-book 2\n      </a>\n      <div class=\"header item borderless\">\n        <h1 class=\"ui header\">\n          Angular 2 Advanced Components\n        </h1>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"ui grid container\">\n    <div class=\"four wide column\">\n      <sidebar [items]=\"examples\"></sidebar>\n    </div>\n\n    <div class=\"ui main text container eight wide column\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n  "
-                    })
+                    }), 
+                    __metadata('design:paramtypes', [router_1.Router])
                 ], AdvancedComponentsApp);
                 return AdvancedComponentsApp;
-            }());
+            })();
             browser_1.bootstrap(AdvancedComponentsApp, [
                 router_1.ROUTER_PROVIDERS,
                 core_1.provide(router_1.APP_BASE_HREF, { useValue: '/' }),

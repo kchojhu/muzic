@@ -1,11 +1,12 @@
-System.register(['angular2/core', 'angular2/platform/browser', './forms/demo_form_sku', './forms/demo_form_sku_with_builder', './forms/demo_form_with_validations_shorthand', './forms/demo_form_with_validations_explicit', './forms/demo_form_with_custom_validations', './forms/demo_form_with_events', './forms/demo_form_ng_model'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['angular2/core', 'angular2/platform/browser', './forms/demo_form_sku', './forms/demo_form_sku_with_builder', './forms/demo_form_with_validations_shorthand', './forms/demo_form_with_validations_explicit', './forms/demo_form_with_custom_validations', './forms/demo_form_with_events', './forms/demo_form_ng_model'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, browser_1, demo_form_sku_1, demo_form_sku_with_builder_1, demo_form_with_validations_shorthand_1, demo_form_with_validations_explicit_1, demo_form_with_custom_validations_1, demo_form_with_events_1, demo_form_ng_model_1;
     var FormsDemoApp;
@@ -65,10 +66,11 @@ System.register(['angular2/core', 'angular2/platform/browser', './forms/demo_for
                             demo_form_with_events_1.DemoFormWithEvents,
                             demo_form_ng_model_1.DemoFormNgModel],
                         template: "\n<div>\n  <demo-form-ng-model></demo-form-ng-model>\n  <demo-form-with-events></demo-form-with-events>\n  <demo-form-with-custom-validations></demo-form-with-custom-validations>\n  <demo-form-with-validations-shorthand></demo-form-with-validations-shorthand>\n  <demo-form-with-validations-explicit></demo-form-with-validations-explicit>\n  <demo-form-sku-builder></demo-form-sku-builder>\n  <demo-form-sku></demo-form-sku>\n</div>\n  "
-                    })
+                    }), 
+                    __metadata('design:paramtypes', [])
                 ], FormsDemoApp);
                 return FormsDemoApp;
-            }());
+            })();
             browser_1.bootstrap(FormsDemoApp);
         }
     }

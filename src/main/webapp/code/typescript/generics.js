@@ -2,12 +2,12 @@ var Person = (function () {
     function Person() {
     }
     return Person;
-}());
+})();
 var Vehicle = (function () {
     function Vehicle() {
     }
     return Vehicle;
-}());
+})();
 var Parser = (function () {
     function Parser(c, fields) {
         this.targetClass = c;
@@ -28,7 +28,7 @@ var Parser = (function () {
         return result;
     };
     return Parser;
-}());
+})();
 var personData = "John,36\nAaron,30\nPeter,20";
 var personParser = new Parser(Person, ['name', 'age']);
 var people = personParser.parse(personData);

@@ -1,6 +1,4 @@
-System.register(['angular2/testing', "angular2/router", '../mocks/routes', '../mocks/spotify', '../../app/ts/components/SearchComponent'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['angular2/testing', "angular2/router", '../mocks/routes', '../mocks/spotify', '../../app/ts/components/SearchComponent'], function(exports_1) {
     var testing_1, router_1, routes_1, spotify_1, SearchComponent_1;
     return {
         setters:[

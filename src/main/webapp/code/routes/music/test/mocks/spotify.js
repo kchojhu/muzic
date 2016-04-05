@@ -1,6 +1,4 @@
-System.register(['angular2/core', 'angular2/testing_internal', '../../app/ts/services/SpotifyService'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['angular2/core', 'angular2/testing_internal', '../../app/ts/services/SpotifyService'], function(exports_1) {
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
@@ -40,7 +38,7 @@ System.register(['angular2/core', 'angular2/testing_internal', '../../app/ts/ser
                     return [core_1.provide(SpotifyService_1.SpotifyService, { useValue: this })];
                 };
                 return MockSpotifyService;
-            }(testing_internal_1.SpyObject));
+            })(testing_internal_1.SpyObject);
             exports_1("MockSpotifyService", MockSpotifyService);
         }
     }

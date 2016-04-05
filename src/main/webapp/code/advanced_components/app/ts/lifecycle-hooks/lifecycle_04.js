@@ -1,11 +1,12 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['angular2/core'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
     var OnInitCmp, OnChangeCmp, DoCheckItem, DoCheckCmp, AftersCmp, LifecycleSampleApp4;
@@ -28,10 +29,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     core_1.Component({
                         selector: 'on-init',
                         template: "\n  <div class=\"ui label\">\n    <i class=\"cubes icon\"></i> Init/Destroy\n  </div>\n  "
-                    })
+                    }), 
+                    __metadata('design:paramtypes', [])
                 ], OnInitCmp);
                 return OnInitCmp;
-            }());
+            })();
             OnChangeCmp = (function () {
                 function OnChangeCmp() {
                 }
@@ -39,20 +41,23 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     console.log('Changes', changes);
                 };
                 __decorate([
-                    core_1.Input('name')
+                    core_1.Input('name'), 
+                    __metadata('design:type', String)
                 ], OnChangeCmp.prototype, "name", void 0);
                 __decorate([
-                    core_1.Input('comment')
+                    core_1.Input('comment'), 
+                    __metadata('design:type', String)
                 ], OnChangeCmp.prototype, "comment", void 0);
                 OnChangeCmp = __decorate([
                     core_1.Component({
                         selector: 'on-change',
                         inputs: ['name', 'comment'],
                         template: "\n  <div class=\"ui comments\">\n    <div class=\"comment\">\n      <a class=\"avatar\">\n        <img src=\"/app/images/avatars/matt.jpg\">\n      </a>\n      <div class=\"content\">\n        <a class=\"author\">{{name}}</a>\n        <div class=\"text\">\n          {{comment}}\n        </div>\n      </div>\n    </div>\n  </div>\n  "
-                    })
+                    }), 
+                    __metadata('design:paramtypes', [])
                 ], OnChangeCmp);
                 return OnChangeCmp;
-            }());
+            })();
             DoCheckItem = (function () {
                 function DoCheckItem(differs) {
                     this.differ = differs.find([]).create(null);
@@ -88,7 +93,8 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.comment.likes += 1;
                 };
                 __decorate([
-                    core_1.Input('comment')
+                    core_1.Input('comment'), 
+                    __metadata('design:type', Object)
                 ], DoCheckItem.prototype, "comment", void 0);
                 DoCheckItem = __decorate([
                     core_1.Component({
@@ -96,10 +102,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         inputs: ['comment'],
                         outputs: ['onRemove'],
                         template: "\n  <div class=\"ui feed\">\n    <div class=\"event\">\n      <div class=\"label\" *ngIf=\"comment.author\">\n        <img src=\"/app/images/avatars/{{comment.author.toLowerCase()}}.jpg\">\n      </div>\n      <div class=\"content\">\n        <div class=\"summary\">\n          <a class=\"user\">\n            {{comment.author}}\n          </a> posted a comment\n          <div class=\"date\">\n            1 Hour Ago\n          </div>\n        </div>\n        <div class=\"extra text\">\n          {{comment.comment}}\n        </div>\n        <div class=\"meta\">\n          <a class=\"trash\" (click)=\"remove()\">\n            <i class=\"trash icon\"></i> Remove\n          </a>\n          <a class=\"trash\" (click)=\"clear()\">\n            <i class=\"eraser icon\"></i> Clear\n          </a>\n          <a class=\"like\" (click)=\"like()\">\n            <i class=\"like icon\"></i> {{comment.likes}} Likes\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n  "
-                    })
+                    }), 
+                    __metadata('design:paramtypes', [core_1.KeyValueDiffers])
                 ], DoCheckItem);
                 return DoCheckItem;
-            }());
+            })();
             DoCheckCmp = (function () {
                 function DoCheckCmp(differs) {
                     this.differ = differs.find([]).create(null);
@@ -142,10 +149,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         selector: 'do-check',
                         directives: [DoCheckItem],
                         template: "\n  <do-check-item [comment]=\"comment\"\n    *ngFor=\"#comment of comments\" (onRemove)=\"removeComment($event)\">\n  </do-check-item>\n\n  <button class=\"ui primary button\" (click)=\"addComment()\">\n    Add\n  </button>\n  "
-                    })
+                    }), 
+                    __metadata('design:paramtypes', [core_1.IterableDiffers])
                 ], DoCheckCmp);
                 return DoCheckCmp;
-            }());
+            })();
             AftersCmp = (function () {
                 function AftersCmp() {
                     console.log('AfterCmd --------- [constructor]');
@@ -183,10 +191,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     core_1.Component({
                         selector: 'afters',
                         template: "\n  <div class=\"ui label\">\n    <i class=\"list icon\"></i> Counter: {{ counter }}\n  </div>\n\n  <button class=\"ui primary button\" (click)=\"inc()\">\n    Increment\n  </button>\n  "
-                    })
+                    }), 
+                    __metadata('design:paramtypes', [])
                 ], AftersCmp);
                 return AftersCmp;
-            }());
+            })();
             LifecycleSampleApp4 = (function () {
                 function LifecycleSampleApp4() {
                     // OnInit and OnDestroy
@@ -212,10 +221,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         selector: 'lifecycle-sample-app',
                         directives: [OnInitCmp, OnChangeCmp, DoCheckCmp, AftersCmp],
                         template: "\n  <h4 class=\"ui horizontal divider header\">\n    OnInit and OnDestroy\n  </h4>\n\n  <button class=\"ui primary button\" (click)=\"toggle()\">\n    Toggle\n  </button>\n  <on-init *ngIf=\"display\"></on-init>\n\n  <h4 class=\"ui horizontal divider header\">\n    OnChange\n  </h4>\n\n  <div class=\"ui form\">\n    <div class=\"field\">\n      <label>Name</label>\n      <input type=\"text\" #namefld value=\"{{name}}\"\n             (keyup)=\"setValues(namefld, commentfld)\">\n    </div>\n\n    <div class=\"field\">\n      <label>Comment</label>\n      <textarea (keyup)=\"setValues(namefld, commentfld)\"\n                rows=\"2\" #commentfld>{{comment}}</textarea>\n    </div>\n  </div>\n\n  <on-change [name]=\"name\" [comment]=\"comment\"></on-change>\n\n  <h4 class=\"ui horizontal divider header\">\n    DoCheck\n  </h4>\n\n  <do-check></do-check>\n\n  <h4 class=\"ui horizontal divider header\">\n    AfterContentInit, AfterViewInit, AfterContentChecked and AfterViewChecked\n  </h4>\n\n  <afters *ngIf=\"displayAfters\"></afters>\n  <button class=\"ui primary button\" (click)=\"toggleAfters()\">\n    Toggle\n  </button>\n  "
-                    })
+                    }), 
+                    __metadata('design:paramtypes', [])
                 ], LifecycleSampleApp4);
                 return LifecycleSampleApp4;
-            }());
+            })();
             exports_1("LifecycleSampleApp4", LifecycleSampleApp4);
         }
     }

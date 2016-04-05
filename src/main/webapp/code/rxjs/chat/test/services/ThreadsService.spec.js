@@ -1,6 +1,4 @@
-System.register(['angular2/testing', '../../app/ts/services/services', '../../app/ts/models', 'underscore'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(['angular2/testing', '../../app/ts/services/services', '../../app/ts/models', 'underscore'], function(exports_1) {
     var testing_1, services_1, models_1, _;
     return {
         setters:[

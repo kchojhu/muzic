@@ -1,6 +1,4 @@
-System.register(["angular2/core", "angular2/router", 'angular2/src/router/instruction', 'angular2/testing_internal'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+System.register(["angular2/core", "angular2/router", 'angular2/src/router/instruction', 'angular2/testing_internal'], function(exports_1) {
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
@@ -36,7 +34,7 @@ System.register(["angular2/core", "angular2/router", 'angular2/src/router/instru
                     return this.ROUTE_PARAMS[key];
                 };
                 return MockRouteParams;
-            }(testing_internal_1.SpyObject));
+            })(testing_internal_1.SpyObject);
             exports_1("MockRouteParams", MockRouteParams);
             MockRouter = (function (_super) {
                 __extends(MockRouter, _super);
@@ -48,7 +46,7 @@ System.register(["angular2/core", "angular2/router", 'angular2/src/router/instru
                     return new instruction_1.ResolvedInstruction(new router_1.ComponentInstruction('detail', [], null, null, true, '0'), null, {});
                 };
                 return MockRouter;
-            }(testing_internal_1.SpyObject));
+            })(testing_internal_1.SpyObject);
             exports_1("MockRouter", MockRouter);
             MockLocationStrategy = (function (_super) {
                 __extends(MockLocationStrategy, _super);
@@ -56,7 +54,7 @@ System.register(["angular2/core", "angular2/router", 'angular2/src/router/instru
                     _super.call(this, router_1.LocationStrategy);
                 }
                 return MockLocationStrategy;
-            }(testing_internal_1.SpyObject));
+            })(testing_internal_1.SpyObject);
             exports_1("MockLocationStrategy", MockLocationStrategy);
             MockLocation = (function (_super) {
                 __extends(MockLocation, _super);
@@ -64,7 +62,7 @@ System.register(["angular2/core", "angular2/router", 'angular2/src/router/instru
                     _super.call(this, router_1.Location);
                 }
                 return MockLocation;
-            }(testing_internal_1.SpyObject));
+            })(testing_internal_1.SpyObject);
             exports_1("MockLocation", MockLocation);
             MockRouterProvider = (function () {
                 function MockRouterProvider() {
@@ -85,7 +83,7 @@ System.register(["angular2/core", "angular2/router", 'angular2/src/router/instru
                     ];
                 };
                 return MockRouterProvider;
-            }());
+            })();
             exports_1("MockRouterProvider", MockRouterProvider);
         }
     }

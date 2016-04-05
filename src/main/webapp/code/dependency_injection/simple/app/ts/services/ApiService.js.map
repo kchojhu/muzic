@@ -1,1 +1,1 @@
-{"version":3,"file":"ApiService.js","sourceRoot":"","sources":["ApiService.ts"],"names":[],"mappings":";;;;;;;YAAA;gBAAA;gBAIA,CAAC;gBAHC,wBAAG,GAAH;oBACE,OAAO,CAAC,GAAG,CAAC,qBAAqB,CAAC,CAAC;gBACrC,CAAC;gBACH,iBAAC;YAAD,CAAC,AAJD,IAIC;YAJD,mCAIC,CAAA"}
+{"version":3,"file":"ApiService.js","sourceRoot":"","sources":["ApiService.ts"],"names":["ApiService","ApiService.constructor","ApiService.get"],"mappings":";;;;;YAAA;gBAAAA;gBAIAC,CAACA;gBAHCD,wBAAGA,GAAHA;oBACEE,OAAOA,CAACA,GAAGA,CAACA,qBAAqBA,CAACA,CAACA;gBACrCA,CAACA;gBACHF,iBAACA;YAADA,CAACA,AAJD,IAIC;YAJD,mCAIC,CAAA"}
