@@ -25,6 +25,7 @@ export class App implements AfterViewInit{
         
     constructor() {
         console.log('created App');
+//        console.
     }
     
     ngAfterViewInit() {
