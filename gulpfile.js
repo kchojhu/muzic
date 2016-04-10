@@ -15,6 +15,21 @@ gulp.task('default', ['help']);
 //	gulp.watch(config.jsFiles, )
 //});
 
+//gulp.task('compile-ts', function () {
+//    var sourceTsFiles = [config.allTypeScript,                //path to typescript files
+//                         config.libraryTypeScriptDefinitions]; //reference to library .d.ts files
+//                        
+//
+//    var tsResult = gulp.src(sourceTsFiles)
+//                       .pipe(sourcemaps.init())
+//                       .pipe(tsc(tsProject));
+//
+//        tsResult.dts.pipe(gulp.dest(config.tsOutputPath));
+//        return tsResult.js
+//                        .pipe(sourcemaps.write('.'))
+//                        .pipe(gulp.dest(config.tsOutputPath));
+//});
+
 gulp.task('serve', function() {
 	var options = {
 			proxy: 'localhost:8080',
@@ -31,7 +46,7 @@ gulp.task('serve', function() {
 	browserSync(options);
 	
 	//gulp.watch([].concat.apply(config.indexFile), browserSync.reload);
-	gulp.watch('src/main/webapp/app/**/*.js', function() {
+	gulp.watch(['src/main/webapp/app/**/*.js'], function() {
 		browserSync.reload({stream:false});
 	});
 });

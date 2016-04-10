@@ -10,9 +10,7 @@ import { YoutubeService } from '../service/Youtube.service';
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedCountry}}&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
+            <li *ngFor="#country of countries"><a href="#" (click)="selectCountry(country)" >{{country}}</a></li>
           </ul>
         </div>
         <ol>
@@ -27,14 +25,23 @@ export class MusicListing {
 
     songs:Song[];
     
-    selectedCountry: string = "Korea";
+    selectedCountry: string = "Korean";
+    
+    countries: string[] = ["American", "Japanese", "Korean"];
     
     ngOnInit() {
         this.getSongs();
     }    
     
+    selectCountry(country:string) {
+        this.selectedCountry = country;
+    }
+    
     getSongs() {
-        this._youtubeService.getSongs('').subscribe(songs => this.songs = songs, err => console.log(err));
+        this._youtubeService.getSongs('').subscribe(songs => {
+         console.log(songs);
+         this.songs = songs;   
+        }, err => console.log(err));
     }
     
     constructor(private  _youtubeService:YoutubeService) {
