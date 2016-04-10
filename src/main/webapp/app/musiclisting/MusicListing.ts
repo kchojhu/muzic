@@ -6,13 +6,14 @@ import { YoutubeService } from '../service/Youtube.service';
 @Component({
   selector: 'music-listing',
   template: `
-    <div class="music-listing">
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedCountry}}&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li *ngFor="#country of countries"><a href="#" (click)="selectCountry(country)" >{{country}}</a></li>
           </ul>
         </div>
+
+    <div class="music-listing">
         <ol>
             <li *ngFor="#song of songs" class="music-item">
                 <p class="title">{{song.songName}}<small class="author"><br>{{song.artistName}}</small></p><img src="{{song.image}}" class="thumb">
