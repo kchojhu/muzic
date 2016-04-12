@@ -9,6 +9,7 @@ import { YoutubeService } from './service/Youtube.service';
 
 declare var SwipeMe:any;
 
+//          <music-player></music-player>
 @Component({
   providers: [HTTP_PROVIDERS, YoutubeService],
   selector: 'hello-world',
@@ -16,10 +17,10 @@ declare var SwipeMe:any;
   template: `
 <div id="swipeme" class="main">
     <div id="swipeme-main" class="panel panel-main">
-          <music-player></music-player>
+          <music-listing></music-listing>
     </div>
     <div id="swipeme-right" class="panel panel-right">
-          <music-listing></music-listing>
+
     </div>
 </div>
   `

@@ -32,11 +32,11 @@ public class MusicChartController {
 	@RequestMapping("/top100")
 	public Songs top100(@RequestParam String country) {
 		switch (country) {
-		case "kpop":
+		case "Korean":
 			return kPopService.getSongs();
-		case "us":
+		case "American":
 			return usPopService.getSongs();
-		case "jpop":
+		case "Japanese":
 			return jPopService.getSongs();
 		}
 		return null;

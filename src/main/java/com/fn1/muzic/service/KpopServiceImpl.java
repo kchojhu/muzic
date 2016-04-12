@@ -75,23 +75,16 @@ public class KpopServiceImpl implements MusicChartSerice {
 		songsList.forEach(s -> {
 			Integer rank = null;
 
-			if (s.get("rank/_alt") != null) {
-				if (StringUtils.isNumeric(s.get("rank/_alt").toString())) {
-					rank = Integer.parseInt(s.get("rank/_alt").toString());
-				} else if (s.get("rank/_alt") instanceof Collection) {
-					String rankString = StringUtils.join((Collection<String>) s.get("rank/_alt"), "");
-
-					if (StringUtils.isNumeric(rankString)) {
-						rank = Integer.parseInt(rankString);
-					}
-				}
-
+			if (s.get("rank") != null) {
+				if (StringUtils.isNumeric(s.get("rank").toString())) {
+					rank = Integer.parseInt(s.get("rank").toString());
+				} 
 			}
 
 			if (rank != null) {
 				Song song = new Song();
 				song.setRank(rank);
-				song.setArtistName(s.get("artist/_text").toString());
+				song.setArtistName(s.get("artist").toString().split("|")[0]);
 				song.setSongName(s.get("title").toString());
 				songs.getSongs().add(song);
 			}

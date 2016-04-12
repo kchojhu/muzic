@@ -15,7 +15,7 @@ import { YoutubeService } from '../service/Youtube.service';
 
     <div class="music-listing">
         <ol>
-            <li *ngFor="#song of songs" class="music-item">
+            <li *ngFor="#song of songs" class="music-item" (click)="selectSong(song)">
                 <p class="title">{{song.songName}}<small class="author"><br>{{song.artistName}}</small></p><img src="{{song.image}}" class="thumb">
             </li>
         </ol>
@@ -31,16 +31,20 @@ export class MusicListing {
     countries: string[] = ["American", "Japanese", "Korean"];
     
     ngOnInit() {
-        this.getSongs();
+        this.getSongs(this.selectedCountry);
     }    
+    
+    selectSong(song:string) {
+        console.log('song selected:' + JSON.stringify(song));
+    }
     
     selectCountry(country:string) {
         this.selectedCountry = country;
+        this.getSongs(country);
     }
     
-    getSongs() {
-        this._youtubeService.getSongs('').subscribe(songs => {
-         console.log(songs);
+    getSongs(country:string) {
+        this._youtubeService.getSongs(country).subscribe(songs => {
          this.songs = songs;   
         }, err => console.log(err));
     }
