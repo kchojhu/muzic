@@ -1,14 +1,7 @@
 <!doctype html>
 <html>
 <head>
- <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
- <meta name="description" content="Korean pop visual radio station. No ads, unlimited skips, charts updated daily from top Korean lists.">
- <meta name="apple-mobile-web-app-capable" content="yes">
- <meta name="apple-mobile-web-app-status-bar-style" content="black">
- <meta name="format-detection" content="telephone=no">
- <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
- <meta name="wot-verification" content="95986abca4f10a301d34"/>
- <title>FN1</title>
+<title>First App - Hello world</title>
 <!-- Libraries -->
 <script src="es6-shim/es6-shim.js"></script>
 <script src="angular2/bundles/angular2-polyfills.js"></script>
@@ -23,11 +16,6 @@
 <script type="text/javascript" src="js/swipeme.ltie9.js"></script>
 <script src="angular2/bundles/router.dev.js"></script>
 <script src="jquery/dist/jquery.min.js" ></script>
-
-<!--      <link rel="apple-touch-icon" href="img/jombly_icon_70.png">
-    <link rel="shortcut icon" href="img/jombly_favicon.ico">
-    <link rel="stylesheet" href="css/app2.css">
-    -->
 <script src="bootstrap/dist/js/bootstrap.min.js" ></script>
 	<script>
 		System.config({
@@ -43,11 +31,6 @@
 <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">	
 <!-- Stylesheet -->
 <link rel="stylesheet" type="text/css" href="css/app.css">
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:600,400|Open+Sans+Condensed:600,300,300italic&amp;subset=cyrillic,latin">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" type="text/css" href="css/app2.css">
-
 
 </head>
 <body>

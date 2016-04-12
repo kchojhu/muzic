@@ -3,6 +3,7 @@
 import { bootstrap } from 'angular2/platform/browser';
 import { Component, AfterViewInit, forwardRef } from 'angular2/core';
 import { MusicListing } from './musiclisting/MusicListing';
+import { MusicPlayer } from './musicplayer/MusicPlayer.component';
 import { HTTP_PROVIDERS} from 'angular2/http';
 import { YoutubeService } from './service/Youtube.service';
 
@@ -11,13 +12,15 @@ declare var SwipeMe:any;
 @Component({
   providers: [HTTP_PROVIDERS, YoutubeService],
   selector: 'hello-world',
-  directives: [MusicListing],
+  directives: [MusicListing, MusicPlayer],
   template: `
 <div id="swipeme" class="main">
     <div id="swipeme-main" class="panel panel-main">
-    <music-listing></music-listing>
+          <music-player></music-player>
     </div>
-    <div id="swipeme-right" class="panel panel-right">Right off-canvas</div>
+    <div id="swipeme-right" class="panel panel-right">
+          <music-listing></music-listing>
+    </div>
 </div>
   `
 })
