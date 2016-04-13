@@ -3,6 +3,7 @@ package com.fn1.muzic.service;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -46,7 +47,7 @@ public class KpopServiceImpl implements MusicChartSerice {
 	
 	@PostConstruct
 	public void init() {
-//		this.getSongs();
+		this.getSongs();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -84,7 +85,7 @@ public class KpopServiceImpl implements MusicChartSerice {
 			if (rank != null) {
 				Song song = new Song();
 				song.setRank(rank);
-				song.setArtistName(s.get("artist").toString().split("|")[0]);
+				song.setArtistName(s.get("artist").toString().split(Pattern.quote("|"))[0]);
 				song.setSongName(s.get("title").toString());
 				songs.getSongs().add(song);
 			}

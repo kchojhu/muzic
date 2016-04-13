@@ -6,7 +6,7 @@ import { YoutubeService } from '../service/Youtube.service';
 @Component({
   selector: 'music-listing',
   template: `
-        <div class="dropdown">
+        <div class="dropdown country-dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedCountry}}&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li *ngFor="#country of countries"><a href="#" (click)="selectCountry(country)" >{{country}}</a></li>
@@ -15,7 +15,7 @@ import { YoutubeService } from '../service/Youtube.service';
 
     <div class="music-listing">
         <ol>
-            <li *ngFor="#song of songs" class="music-item" (click)="selectSong(song)">
+            <li *ngFor="#song of songs" [ngClass]="{'music-item':true, selected: song.isSelected}" (click)="selectSong(song)">
                 <p class="title">{{song.songName}}<small class="author"><br>{{song.artistName}}</small></p><img src="{{song.image}}" class="thumb">
             </li>
         </ol>
@@ -25,17 +25,20 @@ import { YoutubeService } from '../service/Youtube.service';
 export class MusicListing {
 
     songs:Song[];
-    
     selectedCountry: string = "Korean";
-    
+    currentSong: Song;
     countries: string[] = ["American", "Japanese", "Korean"];
     
     ngOnInit() {
         this.getSongs(this.selectedCountry);
     }    
     
-    selectSong(song:string) {
-        console.log('song selected:' + JSON.stringify(song));
+    selectSong(song:Song) {
+        this.currentSong.isSelected = false;
+//        console.log('song selected:' + JSON.stringify(song));
+        this.currentSong = song;
+        this.currentSong.isSelected = true;
+        
     }
     
     selectCountry(country:string) {
@@ -45,7 +48,9 @@ export class MusicListing {
     
     getSongs(country:string) {
         this._youtubeService.getSongs(country).subscribe(songs => {
-         this.songs = songs;   
+         this.songs = songs; 
+         this.currentSong = songs[0];
+         this.currentSong.isSelected = true;  
         }, err => console.log(err));
     }
     

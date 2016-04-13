@@ -4,8 +4,10 @@ export class Song {
     public artistName: string,
     public songName: string,
     public rank: number,
+    public isSelected: boolean = false,
     public duration: number, public image: string){
         
     }
+    
 
 }

@@ -10,16 +10,29 @@ html, body {
 */
 .music-listing {
 	background-color: #222;
-	font-size:70%;
+	font-size:80%;
 	margin: 0;
 	padding: 0;
 }
 
+.author {
+	color: green;
+	font-weight: bold;
+}
+
+.music-listing ol {
+    cursor: pointer;
+}
 
 .music-listing ol li.selected {
     background-color: #3a3a3a;
-    cursor: pointer;
 }
+
+.music-listing ol li:hover {
+    background-color: #3a3a3a;
+}
+
+
 .music-listing ol li {
     position: relative;
     vertical-align: middle;
@@ -44,6 +57,17 @@ html, body {
     display: inline-block;
     vertical-align: middle;
     width: 18%;
+}
+
+.country-dropdown {
+    width: 100%;
+    height: 64px;
+    padding: 16px 0 0 8px;
+    background: #222;
+    border-left: 8px solid #222;
+    border-right: 8px solid #222;
+    border-bottom: 1px solid #3a3a3a;
+    z-index: 2;
 }
 
 /*
@@ -140,6 +164,7 @@ html, body {
 	margin-left: 0;
 }
 
+/*
 @media screen and (max-width: 600px) {
 	code, pre {
 		font-size: 50%;
@@ -164,4 +189,4 @@ html, body {
 	.pull-left .panel-main {
 		margin-left: -25%;
 	}
-}
+}*/
