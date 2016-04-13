@@ -1,7 +1,8 @@
 
-import { Component, Inject } from 'angular2/core';
+import { Component, Inject, Output, EventEmitter } from 'angular2/core';
 import { Song } from '../model/Song';
 import { YoutubeService } from '../service/Youtube.service';
+import 'rxjs/Rx';
 
 @Component({
   selector: 'music-listing',
@@ -28,6 +29,7 @@ export class MusicListing {
     selectedCountry: string = "Korean";
     currentSong: Song;
     countries: string[] = ["American", "Japanese", "Korean"];
+    @Output() selectedSongEvent: EventEmitter<Song> = new EventEmitter();
     
     ngOnInit() {
         this.getSongs(this.selectedCountry);
@@ -38,6 +40,7 @@ export class MusicListing {
 //        console.log('song selected:' + JSON.stringify(song));
         this.currentSong = song;
         this.currentSong.isSelected = true;
+        this.selectedSongEvent.next(song);
         
     }
     
