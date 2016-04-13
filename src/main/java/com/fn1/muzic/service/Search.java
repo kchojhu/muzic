@@ -53,72 +53,72 @@ public class Search {
    *
    * @param args command line args.
    */
-  public static void main(String[] args) {
-    // Read the developer key from youtube.properties
-    Properties properties = new Properties();
-    try {
-      InputStream in = Search.class.getResourceAsStream("/" + PROPERTIES_FILENAME);
-      properties.load(in);
-
-    } catch (IOException e) {
-      System.err.println("There was an error reading " + PROPERTIES_FILENAME + ": " + e.getCause()
-          + " : " + e.getMessage());
-      System.exit(1);
-    }
-
-    try {
-      /*
-       * The YouTube object is used to make all API requests. The last argument is required, but
-       * because we don't need anything initialized when the HttpRequest is initialized, we override
-       * the interface and provide a no-op function.
-       */
-      youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
-        public void initialize(HttpRequest request) throws IOException {}
-      }).setApplicationName("youtube-cmdline-search-sample").build();
-
-      // Get query term from user.
-      String queryTerm = getInputQuery();
-
-      YouTube.Search.List search = youtube.search().list("id,snippet");
-
-      
-//      YouTube.Videos.List videoList = youtube.videos().list("contentDetails");
-      /*
-       * It is important to set your developer key from the Google Developer Console for
-       * non-authenticated requests (found under the API Access tab at this link:
-       * code.google.com/apis/). This is good practice and increased your quota.
-       */
-      String apiKey = properties.getProperty("youtube.apikey");
-      key = apiKey;
-      search.setKey(apiKey);
-      search.setQ(queryTerm);
-      /*
-       * We are only searching for videos (not playlists or channels). If we were searching for
-       * more, we would add them as a string like this: "video,playlist,channel".
-       */
-      search.setType("video");
-      /*
-       * This method reduces the info returned to only the fields we need and makes calls more
-       * efficient.
-       */
-      search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
-      search.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
-      SearchListResponse searchResponse = search.execute();
-
-      List<SearchResult> searchResultList = searchResponse.getItems();
-
-      if (searchResultList != null) {
-        prettyPrint(searchResultList.iterator(), queryTerm);
-      }
-    } catch (GoogleJsonResponseException e) {
-      System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
-          + e.getDetails().getMessage());
-    } catch (IOException e) {
-      System.err.println("There was an IO error: " + e.getCause() + " : " + e.getMessage());
-    } catch (Throwable t) {
-      t.printStackTrace();
-    }
-  }
+//  public static void main(String[] args) {
+//    // Read the developer key from youtube.properties
+//    Properties properties = new Properties();
+//    try {
+//      InputStream in = Search.class.getResourceAsStream("/" + PROPERTIES_FILENAME);
+//      properties.load(in);
+//
+//    } catch (IOException e) {
+//      System.err.println("There was an error reading " + PROPERTIES_FILENAME + ": " + e.getCause()
+//          + " : " + e.getMessage());
+//      System.exit(1);
+//    }
+//
+//    try {
+//      /*
+//       * The YouTube object is used to make all API requests. The last argument is required, but
+//       * because we don't need anything initialized when the HttpRequest is initialized, we override
+//       * the interface and provide a no-op function.
+//       */
+//      youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+//        public void initialize(HttpRequest request) throws IOException {}
+//      }).setApplicationName("youtube-cmdline-search-sample").build();
+//
+//      // Get query term from user.
+//      String queryTerm = getInputQuery();
+//
+//      YouTube.Search.List search = youtube.search().list("id,snippet");
+//
+//      
+////      YouTube.Videos.List videoList = youtube.videos().list("contentDetails");
+//      /*
+//       * It is important to set your developer key from the Google Developer Console for
+//       * non-authenticated requests (found under the API Access tab at this link:
+//       * code.google.com/apis/). This is good practice and increased your quota.
+//       */
+//      String apiKey = properties.getProperty("youtube.apikey");
+//      key = apiKey;
+//      search.setKey(apiKey);
+//      search.setQ(queryTerm);
+//      /*
+//       * We are only searching for videos (not playlists or channels). If we were searching for
+//       * more, we would add them as a string like this: "video,playlist,channel".
+//       */
+//      search.setType("video");
+//      /*
+//       * This method reduces the info returned to only the fields we need and makes calls more
+//       * efficient.
+//       */
+//      search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+//      search.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
+//      SearchListResponse searchResponse = search.execute();
+//
+//      List<SearchResult> searchResultList = searchResponse.getItems();
+//
+//      if (searchResultList != null) {
+//        prettyPrint(searchResultList.iterator(), queryTerm);
+//      }
+//    } catch (GoogleJsonResponseException e) {
+//      System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
+//          + e.getDetails().getMessage());
+//    } catch (IOException e) {
+//      System.err.println("There was an IO error: " + e.getCause() + " : " + e.getMessage());
+//    } catch (Throwable t) {
+//      t.printStackTrace();
+//    }
+//  }
 
   /*
    * Returns a query term (String) from user via the terminal.
