@@ -256,6 +256,18 @@ input[type=range]:focus::-ms-fill-upper {
 	transition: width 0.2s
 }
 
+#topList {
+	position: absolute;
+	top: 70px;
+	left: 0px;
+	width: 0px;
+	visibility: hidden;
+	height: 70vh;
+	background-color: #f7f7f7;
+	z-index: 99;
+	transition: width 0.2s
+}
+
 @media ( min-width : 1201px) {
 	#topList {
 		left: 16%;
@@ -450,6 +462,21 @@ input[type=range]:focus::-ms-fill-upper {
 
 #playerControls.squareTop {
 	border-radius: 1px
+}
+
+#topListBtn {
+    font-family: FontAwesome;
+    position: absolute;
+    right: 5px;
+    z-index: 99;
+	content: "\f0d8";
+	font-family: "FontAwesome";
+	font-size: 2rem;
+	color: white;
+	text-shadow: 2px 2px 0 #000;
+	background: #000;
+	opacity: 0.5;
+
 }
 
 #playerControls:before {
