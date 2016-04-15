@@ -19,7 +19,7 @@ declare var SwipeMe:any;
   template: `
 <div id="swipeme" class="main">
     <div id="swipeme-main" class="panel panel-main">
-           <music-player ></music-player>
+           <music-player (nextSong)="nextSongEvent($event)"></music-player>
     </div>
     <div id="swipeme-right" class="panel panel-right">
         <music-listing (selectedSongEvent)="selectedSongEvent($event)"></music-listing>
@@ -29,9 +29,14 @@ declare var SwipeMe:any;
 })
 export class App implements AfterViewInit{
     @ViewChild(MusicPlayer) musicPlayer : MusicPlayer;
+    @ViewChild(MusicListing) musicList : MusicListing;
         
     constructor() {
         console.log('created App');
+    }
+    
+    nextSongEvent(currentSong:Song) {
+        this.musicList.selectNextSong(currentSong);
     }
     
     selectedSongEvent(song:Song) {

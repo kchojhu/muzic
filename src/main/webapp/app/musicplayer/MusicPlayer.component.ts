@@ -1,4 +1,4 @@
-import { Component, Inject } from 'angular2/core';
+import { Component, Inject, Output, EventEmitter } from 'angular2/core';
 import { Song } from '../model/Song';
 
 /*
@@ -39,7 +39,7 @@ declare var $: any;
           <button id="info">&#xf129;</button>
           <button id="play" (click)="play()">{{isPlaying ? '&#xf04c;' :'&#xf04b;' }}</button>
           <button id="pause" class="hidden">&#xf04c;</button>
-          <button id="next">&#xf04e;</button>
+          <button id="next" (click)="playNext()">&#xf04e;</button>
       </div>
     </section>
 `
@@ -48,9 +48,24 @@ export class MusicPlayer {
     player: any;
     playerEl: any;
     isPlaying: boolean = false;
+    currentSong: Song;
+    @Output() nextSong: EventEmitter<Song> = new EventEmitter<Song>();
+    
+    playNext() {
+        this.nextSong.emit(this.currentSong);
+    }
 
     play(song?: Song) {
         console.log('play:' + JSON.stringify(song));
+
+
+        if (song) {
+            this.player.loadVideoById(song.songId);
+            this.currentSong = song;
+            this.isPlaying = true;
+            return;
+        }
+
         if (this.isPlaying) {
             this.player.pauseVideo();
         } else {
@@ -95,9 +110,12 @@ export class MusicPlayer {
                 iv_load_policy: 3,
                 origin: "http://www.fn1.co/",
                 playsinline: 1,
-                fs: 0,
+                fs: 1,
                 rel: 0,
                 wmode: "transparent"
+            },
+            events: {
+                'onStateChange': this.onPlayerStateChange
             }
         });
 
@@ -106,10 +124,21 @@ export class MusicPlayer {
         this.resizeWindow();
     }
 
+    onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.PLAYING) {
+
+        }
+        if (event.data === YT.PlayerState.ENDED) {
+            this.nextSong.next(this.currentSong);
+        }
+        if (event.data === YT.PlayerState.PAUSED) {
+        }
+    }
+
     resizeWindow() {
         let pHeight, pWidth;
         let width = $(window).width();
-        let height = $(window).height();        
+        let height = $(window).height();
         let ratio = 16 / 9;
         if (width / ratio < height) {
             pWidth = Math.ceil(height * ratio);

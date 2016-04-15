@@ -4,6 +4,8 @@ import { Song } from '../model/Song';
 import { YoutubeService } from '../service/Youtube.service';
 import 'rxjs/Rx';
 
+declare var _:any;
+
 @Component({
   selector: 'music-listing',
   template: `
@@ -29,11 +31,17 @@ export class MusicListing {
     selectedCountry: string = "Korean";
     currentSong: Song;
     countries: string[] = ["American", "Japanese", "Korean"];
-    @Output() selectedSongEvent: EventEmitter<Song> = new EventEmitter();
+    @Output() selectedSongEvent:EventEmitter<Song> = new EventEmitter<Song>();
     
     ngOnInit() {
         this.getSongs(this.selectedCountry);
     }    
+    
+    selectNextSong(song:Song) {
+        let songIndex:number = song && song.songIndex || 0;
+        songIndex += 1;
+        this.selectSong(this.songs[songIndex]);
+    }
     
     selectSong(song:Song) {
         this.currentSong.isSelected = false;
@@ -51,7 +59,10 @@ export class MusicListing {
     
     getSongs(country:string) {
         this._youtubeService.getSongs(country).subscribe(songs => {
-         this.songs = songs; 
+         let songIndex = 0;
+         _.each(songs, (song) => song.songIndex = songIndex++);
+         this.songs = songs;
+            
          this.currentSong = songs[0];
          this.currentSong.isSelected = true;  
         }, err => console.log(err));
