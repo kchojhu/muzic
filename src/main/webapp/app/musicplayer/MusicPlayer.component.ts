@@ -115,7 +115,7 @@ export class MusicPlayer {
                 wmode: "transparent"
             },
             events: {
-                'onStateChange': this.onPlayerStateChange
+                'onStateChange': this.onPlayerStateChange.bind(this)
             }
         });
 
@@ -129,7 +129,7 @@ export class MusicPlayer {
 
         }
         if (event.data === YT.PlayerState.ENDED) {
-            this.nextSong.next(this.currentSong);
+            this.nextSong.emit(this.currentSong);
         }
         if (event.data === YT.PlayerState.PAUSED) {
         }
