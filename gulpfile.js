@@ -36,13 +36,15 @@ gulp.task('serve', function() {
 			port: 4000,
 			files:['src/main/webapp/index.html', 'target/classes/**/*.class', 'src/main/webapp/app/**/*.js', 'src/main/resources/public/**/*.css'],
 			reloadDelay:2000,
+			browser: 'firefox',
 			logLevel: 'debug',
-			browsers: 'google chrome',
 			injectChange: true,
 			logFileChange: true,
 			logPrefix: 'gulp-patterns',
 			notify:true
 	};
+//	browsers: 'google chrome',
+
 	browserSync(options);
 	
 	//gulp.watch([].concat.apply(config.indexFile), browserSync.reload);
