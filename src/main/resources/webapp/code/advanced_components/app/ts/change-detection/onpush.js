@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -25,7 +27,7 @@ System.register(['angular2/core'], function(exports_1) {
                     return new Date();
                 };
                 return Profile;
-            })();
+            }());
             DefaultCmp = (function () {
                 function DefaultCmp() {
                 }
@@ -42,7 +44,7 @@ System.register(['angular2/core'], function(exports_1) {
                     __metadata('design:paramtypes', [])
                 ], DefaultCmp);
                 return DefaultCmp;
-            })();
+            }());
             OnPushCmp = (function () {
                 function OnPushCmp() {
                 }
@@ -60,7 +62,7 @@ System.register(['angular2/core'], function(exports_1) {
                     __metadata('design:paramtypes', [])
                 ], OnPushCmp);
                 return OnPushCmp;
-            })();
+            }());
             OnPushChangeDetectionSampleApp = (function () {
                 function OnPushChangeDetectionSampleApp() {
                     this.profile1 = new Profile('Felipe', 'Coury');
@@ -75,7 +77,7 @@ System.register(['angular2/core'], function(exports_1) {
                     __metadata('design:paramtypes', [])
                 ], OnPushChangeDetectionSampleApp);
                 return OnPushChangeDetectionSampleApp;
-            })();
+            }());
             exports_1("OnPushChangeDetectionSampleApp", OnPushChangeDetectionSampleApp);
         }
     }

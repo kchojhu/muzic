@@ -1,4 +1,6 @@
-System.register(['angular2/testing', 'calculator'], function(exports_1) {
+System.register(['angular2/testing', 'calculator'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var testing_1, calculator_1;
     return {
         setters:[

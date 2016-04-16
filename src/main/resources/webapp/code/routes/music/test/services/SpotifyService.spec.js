@@ -1,4 +1,6 @@
-System.register(['angular2/testing', 'angular2/http/testing', 'angular2/core', 'angular2/http', '../../app/ts/services/SpotifyService'], function(exports_1) {
+System.register(['angular2/testing', 'angular2/http/testing', 'angular2/core', 'angular2/http', '../../app/ts/services/SpotifyService'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var testing_1, testing_2, core_1, http_1, SpotifyService_1;
     return {
         setters:[

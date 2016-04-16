@@ -11,7 +11,7 @@ var Report = (function () {
         this.data.forEach(function (line) { return console.log(line); });
     };
     return Report;
-})();
+}());
 function pad(s, len, pad) {
     s = s + '';
     var spaces = (len + 1) - s.length;
@@ -43,7 +43,7 @@ var TabbedReport = (function (_super) {
         _super.call(this, data);
     }
     return TabbedReport;
-})(Report);
+}(Report));
 var headers = ['Name', 'Gender', 'Age'];
 var values = [
     ['Alice Green', 'Female', 55],

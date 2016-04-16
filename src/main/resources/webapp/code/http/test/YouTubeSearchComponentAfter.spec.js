@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/testing', 'angular2/http/testing', 'angular2/http', '../app/ts/components/YouTubeSearchComponent'], function(exports_1) {
+System.register(['angular2/core', 'angular2/testing', 'angular2/http/testing', 'angular2/http', '../app/ts/components/YouTubeSearchComponent'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var core_1, testing_1, testing_2, http_1, YouTubeSearchComponent_1;
     return {
         setters:[

@@ -1,4 +1,4 @@
-///<reference path="../../../../node_modules/angular2/typings/browser.d.ts"/>
+///<reference path="../../../../../node_modules/angular2/typings/browser.d.ts"/>
 
 import { bootstrap } from 'angular2/platform/browser';
 import { Component, AfterViewInit, ViewChild } from 'angular2/core';
@@ -9,17 +9,17 @@ import { HTTP_PROVIDERS} from 'angular2/http';
 import { YoutubeService } from './service/Youtube.service';
 import 'rxjs/Rx';
 
-declare var SwipeMe:any;
+declare var SwipeMe: any;
 
-//         
+// ok123456
 @Component({
-  providers: [HTTP_PROVIDERS, YoutubeService],
-  selector: 'hello-world',
-  directives: [MusicListing, MusicPlayer],
-  template: `
+    providers: [HTTP_PROVIDERS, YoutubeService],
+    selector: 'hello-world',
+    directives: [MusicListing, MusicPlayer],
+    template: `
 <div id="swipeme" class="main">
     <div id="swipeme-main" class="panel panel-main">
-           <music-player (nextSong)="nextSongEvent($event)"></music-player>
+           <music-player (nextSong)="nextSongEvent($event)" (togglePlayListEvent)="togglePlayList($event)"></music-player>
     </div>
     <div id="swipeme-right" class="panel panel-right">
         <music-listing (selectedSongEvent)="selectedSongEvent($event)"></music-listing>
@@ -27,26 +27,40 @@ declare var SwipeMe:any;
 </div>
   `
 })
-export class App implements AfterViewInit{
-    @ViewChild(MusicPlayer) musicPlayer : MusicPlayer;
-    @ViewChild(MusicListing) musicList : MusicListing;
-        
+export class App implements AfterViewInit {
+    @ViewChild(MusicPlayer) musicPlayer: MusicPlayer;
+    @ViewChild(MusicListing) musicList: MusicListing;
+    swipe:any;
+    
     constructor() {
         console.log('created App');
     }
-    
-    nextSongEvent(currentSong:Song) {
+
+    togglePlayList(msg:string) {
+        console.log('playlist2');
+//this.swipe.swipe('left');
+//        debugger;
+        if (document.getElementById('swipeme').className.indexOf('pull-left') === -1) {
+            this.swipe.swipe('left');
+        } else {
+            this.swipe.swipe('right');
+        }
+        
+       // event.preventDefault(); 
+    }
+
+    nextSongEvent(currentSong: Song) {
         this.musicList.selectNextSong(currentSong);
     }
-    
-    selectedSongEvent(song:Song) {
+
+    selectedSongEvent(song: Song) {
         console.log('song emitted:' + JSON.stringify(song));
         this.musicPlayer.play(song);
     }
-    
+
     ngAfterViewInit() {
 
-            let swipe = new SwipeMe(
+        this.swipe = new SwipeMe(
             document.getElementById('swipeme'),
             {
                 accessClasses: {
@@ -55,7 +69,7 @@ export class App implements AfterViewInit{
                 }
             }
         );
-
+/*
         function triggerLeft(event) {
             if (document.getElementById('swipeme').className.indexOf('pull-right') === -1) {
                 swipe.swipe('right');
@@ -63,7 +77,7 @@ export class App implements AfterViewInit{
                 swipe.swipe('left');
             }
 
-            if(event.preventDefault) event.preventDefault();
+            if (event.preventDefault) event.preventDefault();
         }
 
         function triggerRight(event) {
@@ -73,10 +87,10 @@ export class App implements AfterViewInit{
                 swipe.swipe('right');
             }
 
-            if(event.preventDefault) event.preventDefault();
+            if (event.preventDefault) event.preventDefault();
         }
-
+*/
     }
 }
 
-bootstrap(App,[]).catch(err => console.error(err));
+bootstrap(App, []).catch(err => console.error(err));

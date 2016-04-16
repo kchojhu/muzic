@@ -25,7 +25,7 @@ declare var $: any;
     selector: 'music-player',
     template: `
     <section id="video-container">
-      <button id="topListBtn">&#xf0cb;</button>
+          <button id="topListBtn" (click)="togglePlayList()">&#xf0cb;</button>
       <div id="player"></div>
     </section>
     <section id="screen">
@@ -37,6 +37,7 @@ declare var $: any;
           <section id="songInfo" class="hidden"></section>
           <input type="range" id="volumeBar" value="50" max="100" min="0" step="0.025">
           <button id="info">&#xf129;</button>
+
           <button id="play" (click)="play()">{{isPlaying ? '&#xf04c;' :'&#xf04b;' }}</button>
           <button id="pause" class="hidden">&#xf04c;</button>
           <button id="next" (click)="playNext()">&#xf04e;</button>
@@ -50,9 +51,18 @@ export class MusicPlayer {
     isPlaying: boolean = false;
     currentSong: Song;
     @Output() nextSong: EventEmitter<Song> = new EventEmitter<Song>();
-    
+    @Output() togglePlayListEvent: EventEmitter<string> = new EventEmitter<string>();    
+
+    togglePlayList() {
+        console.log('playlist1');
+        
+        this.togglePlayListEvent.emit('toggle playlist');
+    }
+
+
     playNext() {
         this.nextSong.emit(this.currentSong);
+        
     }
 
     play(song?: Song) {
@@ -96,7 +106,8 @@ export class MusicPlayer {
                 'onStateChange' : onPlayerStateChange
             }
         */
-
+        console.log('here');
+        console.log(YT.Player);
         this.player = new YT.Player('player', {
             width: $(window).width(),
             height: Math.ceil(width / ratio),

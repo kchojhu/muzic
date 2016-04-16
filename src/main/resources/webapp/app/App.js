@@ -1,5 +1,7 @@
-///<reference path="../../../../node_modules/angular2/typings/browser.d.ts"/>
-System.register(['angular2/platform/browser', 'angular2/core', './musiclisting/MusicListing', './musicplayer/MusicPlayer.component', 'angular2/http', './service/Youtube.service', 'rxjs/Rx'], function(exports_1) {
+///<reference path="../../../../../node_modules/angular2/typings/browser.d.ts"/>
+System.register(['angular2/platform/browser', 'angular2/core', './musiclisting/MusicListing', './musicplayer/MusicPlayer.component', 'angular2/http', './service/Youtube.service', 'rxjs/Rx'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -33,11 +35,23 @@ System.register(['angular2/platform/browser', 'angular2/core', './musiclisting/M
             },
             function (_1) {}],
         execute: function() {
-            //         
+            // ok123456
             App = (function () {
                 function App() {
                     console.log('created App');
                 }
+                App.prototype.togglePlayList = function (msg) {
+                    console.log('playlist2');
+                    //this.swipe.swipe('left');
+                    //        debugger;
+                    if (document.getElementById('swipeme').className.indexOf('pull-left') === -1) {
+                        this.swipe.swipe('left');
+                    }
+                    else {
+                        this.swipe.swipe('right');
+                    }
+                    // event.preventDefault(); 
+                };
                 App.prototype.nextSongEvent = function (currentSong) {
                     this.musicList.selectNextSong(currentSong);
                 };
@@ -46,32 +60,33 @@ System.register(['angular2/platform/browser', 'angular2/core', './musiclisting/M
                     this.musicPlayer.play(song);
                 };
                 App.prototype.ngAfterViewInit = function () {
-                    var swipe = new SwipeMe(document.getElementById('swipeme'), {
+                    this.swipe = new SwipeMe(document.getElementById('swipeme'), {
                         accessClasses: {
                             left: 'pull-right',
                             right: 'pull-left'
                         }
                     });
-                    function triggerLeft(event) {
-                        if (document.getElementById('swipeme').className.indexOf('pull-right') === -1) {
-                            swipe.swipe('right');
-                        }
-                        else {
-                            swipe.swipe('left');
-                        }
-                        if (event.preventDefault)
-                            event.preventDefault();
-                    }
-                    function triggerRight(event) {
-                        if (document.getElementById('swipeme').className.indexOf('pull-left') === -1) {
-                            swipe.swipe('left');
-                        }
-                        else {
-                            swipe.swipe('right');
-                        }
-                        if (event.preventDefault)
-                            event.preventDefault();
-                    }
+                    /*
+                            function triggerLeft(event) {
+                                if (document.getElementById('swipeme').className.indexOf('pull-right') === -1) {
+                                    swipe.swipe('right');
+                                } else {
+                                    swipe.swipe('left');
+                                }
+                    
+                                if (event.preventDefault) event.preventDefault();
+                            }
+                    
+                            function triggerRight(event) {
+                                if (document.getElementById('swipeme').className.indexOf('pull-left') === -1) {
+                                    swipe.swipe('left');
+                                } else {
+                                    swipe.swipe('right');
+                                }
+                    
+                                if (event.preventDefault) event.preventDefault();
+                            }
+                    */
                 };
                 __decorate([
                     core_1.ViewChild(MusicPlayer_component_1.MusicPlayer), 
@@ -86,12 +101,12 @@ System.register(['angular2/platform/browser', 'angular2/core', './musiclisting/M
                         providers: [http_1.HTTP_PROVIDERS, Youtube_service_1.YoutubeService],
                         selector: 'hello-world',
                         directives: [MusicListing_1.MusicListing, MusicPlayer_component_1.MusicPlayer],
-                        template: "\n<div id=\"swipeme\" class=\"main\">\n    <div id=\"swipeme-main\" class=\"panel panel-main\">\n           <music-player (nextSong)=\"nextSongEvent($event)\"></music-player>\n    </div>\n    <div id=\"swipeme-right\" class=\"panel panel-right\">\n        <music-listing (selectedSongEvent)=\"selectedSongEvent($event)\"></music-listing>\n    </div>\n</div>\n  "
+                        template: "\n<div id=\"swipeme\" class=\"main\">\n    <div id=\"swipeme-main\" class=\"panel panel-main\">\n           <music-player (nextSong)=\"nextSongEvent($event)\" (togglePlayListEvent)=\"togglePlayList($event)\"></music-player>\n    </div>\n    <div id=\"swipeme-right\" class=\"panel panel-right\">\n        <music-listing (selectedSongEvent)=\"selectedSongEvent($event)\"></music-listing>\n    </div>\n</div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], App);
                 return App;
-            })();
+            }());
             exports_1("App", App);
             browser_1.bootstrap(App, []).catch(function (err) { return console.error(err); });
         }

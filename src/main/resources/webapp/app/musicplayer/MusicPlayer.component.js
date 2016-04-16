@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,7 +22,12 @@ System.register(['angular2/core'], function(exports_1) {
                 function MusicPlayer() {
                     this.isPlaying = false;
                     this.nextSong = new core_1.EventEmitter();
+                    this.togglePlayListEvent = new core_1.EventEmitter();
                 }
+                MusicPlayer.prototype.togglePlayList = function () {
+                    console.log('playlist1');
+                    this.togglePlayListEvent.emit('toggle playlist');
+                };
                 MusicPlayer.prototype.playNext = function () {
                     this.nextSong.emit(this.currentSong);
                 };
@@ -61,6 +68,8 @@ System.register(['angular2/core'], function(exports_1) {
                             'onStateChange' : onPlayerStateChange
                         }
                     */
+                    console.log('here');
+                    console.log(YT.Player);
                     this.player = new YT.Player('player', {
                         width: $(window).width(),
                         height: Math.ceil(width / ratio),
@@ -119,15 +128,19 @@ System.register(['angular2/core'], function(exports_1) {
                     core_1.Output(), 
                     __metadata('design:type', core_1.EventEmitter)
                 ], MusicPlayer.prototype, "nextSong", void 0);
+                __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', core_1.EventEmitter)
+                ], MusicPlayer.prototype, "togglePlayListEvent", void 0);
                 MusicPlayer = __decorate([
                     core_1.Component({
                         selector: 'music-player',
-                        template: "\n    <section id=\"video-container\">\n      <button id=\"topListBtn\">&#xf0cb;</button>\n      <div id=\"player\"></div>\n    </section>\n    <section id=\"screen\">\n\n    </section>\n\n    <section id=\"controlsContainer\">\n      <div id=\"playerControls\">\n          <section id=\"songInfo\" class=\"hidden\"></section>\n          <input type=\"range\" id=\"volumeBar\" value=\"50\" max=\"100\" min=\"0\" step=\"0.025\">\n          <button id=\"info\">&#xf129;</button>\n          <button id=\"play\" (click)=\"play()\">{{isPlaying ? '&#xf04c;' :'&#xf04b;' }}</button>\n          <button id=\"pause\" class=\"hidden\">&#xf04c;</button>\n          <button id=\"next\" (click)=\"playNext()\">&#xf04e;</button>\n      </div>\n    </section>\n"
+                        template: "\n    <section id=\"video-container\">\n          <button id=\"topListBtn\" (click)=\"togglePlayList()\">&#xf0cb;</button>\n      <div id=\"player\"></div>\n    </section>\n    <section id=\"screen\">\n\n    </section>\n\n    <section id=\"controlsContainer\">\n      <div id=\"playerControls\">\n          <section id=\"songInfo\" class=\"hidden\"></section>\n          <input type=\"range\" id=\"volumeBar\" value=\"50\" max=\"100\" min=\"0\" step=\"0.025\">\n          <button id=\"info\">&#xf129;</button>\n\n          <button id=\"play\" (click)=\"play()\">{{isPlaying ? '&#xf04c;' :'&#xf04b;' }}</button>\n          <button id=\"pause\" class=\"hidden\">&#xf04c;</button>\n          <button id=\"next\" (click)=\"playNext()\">&#xf04e;</button>\n      </div>\n    </section>\n"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], MusicPlayer);
                 return MusicPlayer;
-            })();
+            }());
             exports_1("MusicPlayer", MusicPlayer);
         }
     }

@@ -1,7 +1,9 @@
 /*
  * Angular
  */
-System.register(['angular2/core', 'angular2/platform/browser', 'angular2/router', 'components/HomeComponent', 'components/AboutComponent', 'components/ContactComponent'], function(exports_1) {
+System.register(['angular2/core', 'angular2/platform/browser', 'angular2/router', 'components/HomeComponent', 'components/AboutComponent', 'components/ContactComponent'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,7 +59,7 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/router'
                     __metadata('design:paramtypes', [])
                 ], RoutesDemoApp);
                 return RoutesDemoApp;
-            })();
+            }());
             browser_1.bootstrap(RoutesDemoApp, [
                 router_1.ROUTER_PROVIDERS,
                 core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy })

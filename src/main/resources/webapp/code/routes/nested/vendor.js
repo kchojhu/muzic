@@ -1,4 +1,6 @@
-System.register(['es6-shim', 'es6-promise', 'es7-reflect-metadata/dist/browser', 'zone.js/dist/zone', 'zone.js/dist/long-stack-trace-zone', 'angular2/platform/browser', 'angular2/platform/common_dom', 'angular2/core', 'angular2/router', 'angular2/http', 'rxjs'], function(exports_1) {
+System.register(['es6-shim', 'es6-promise', 'es7-reflect-metadata/dist/browser', 'zone.js/dist/zone', 'zone.js/dist/long-stack-trace-zone', 'angular2/platform/browser', 'angular2/platform/common_dom', 'angular2/core', 'angular2/router', 'angular2/http', 'rxjs'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     return {
         setters:[
             function (_1) {},

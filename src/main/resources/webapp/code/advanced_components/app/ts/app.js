@@ -5,7 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-System.register(['angular2/core', 'angular2/platform/browser', 'angular2/router', './app/intro_component', './styling/styling', './host/host', './host/steps/host_01', './host/steps/host_02', './host/steps/host_03', './host/steps/host_04', './tabs/tabs', './lifecycle-hooks/lifecycle_01', './lifecycle-hooks/lifecycle_02', './lifecycle-hooks/lifecycle_03', './lifecycle-hooks/lifecycle_04', './templates/for', './templates/if', './transclusion/transclusion', './change-detection/onpush', './change-detection/observables', './app/sidebar', './assets'], function(exports_1) {
+System.register(['angular2/core', 'angular2/platform/browser', 'angular2/router', './app/intro_component', './styling/styling', './host/host', './host/steps/host_01', './host/steps/host_02', './host/steps/host_03', './host/steps/host_04', './tabs/tabs', './lifecycle-hooks/lifecycle_01', './lifecycle-hooks/lifecycle_02', './lifecycle-hooks/lifecycle_03', './lifecycle-hooks/lifecycle_04', './templates/for', './templates/if', './transclusion/transclusion', './change-detection/onpush', './change-detection/observables', './app/sidebar', './assets'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -126,7 +128,7 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/router'
                     __metadata('design:paramtypes', [router_1.Router])
                 ], AdvancedComponentsApp);
                 return AdvancedComponentsApp;
-            })();
+            }());
             browser_1.bootstrap(AdvancedComponentsApp, [
                 router_1.ROUTER_PROVIDERS,
                 core_1.provide(router_1.APP_BASE_HREF, { useValue: '/' }),

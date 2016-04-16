@@ -1,7 +1,9 @@
 /**
  * YouTubeSearchComponent is a tiny app that will autocomplete search YouTube.
  */
-System.register(['angular2/core', 'angular2/http', 'rxjs'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -51,7 +53,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs'], function(exports_1) 
                         "https://www.youtube.com/watch?v=" + this.id;
                 }
                 return SearchResult;
-            })();
+            }());
             /**
              * YouTubeService connects to the YouTube API
              * See: * https://developers.google.com/youtube/v3/docs/search/list
@@ -91,7 +93,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs'], function(exports_1) 
                     __metadata('design:paramtypes', [http_1.Http, String, String])
                 ], YouTubeService);
                 return YouTubeService;
-            })();
+            }());
             exports_1("YouTubeService", YouTubeService);
             exports_1("youTubeServiceInjectables", youTubeServiceInjectables = [
                 core_1.bind(YouTubeService).toClass(YouTubeService),
@@ -137,7 +139,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs'], function(exports_1) 
                     __metadata('design:paramtypes', [YouTubeService, core_1.ElementRef])
                 ], SearchBox);
                 return SearchBox;
-            })();
+            }());
             SearchResultComponent = (function () {
                 function SearchResultComponent() {
                 }
@@ -150,7 +152,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs'], function(exports_1) 
                     __metadata('design:paramtypes', [])
                 ], SearchResultComponent);
                 return SearchResultComponent;
-            })();
+            }());
             exports_1("SearchResultComponent", SearchResultComponent);
             YouTubeSearchComponent = (function () {
                 function YouTubeSearchComponent() {
@@ -168,7 +170,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs'], function(exports_1) 
                     __metadata('design:paramtypes', [])
                 ], YouTubeSearchComponent);
                 return YouTubeSearchComponent;
-            })();
+            }());
             exports_1("YouTubeSearchComponent", YouTubeSearchComponent);
         }
     }

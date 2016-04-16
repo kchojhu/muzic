@@ -1,4 +1,6 @@
-System.register(['angular2/testing', 'angular2/testing_internal', 'angular2/platform/browser', 'angular2/common', '../../app/ts/forms/demo_form_with_validations_shorthand'], function(exports_1) {
+System.register(['angular2/testing', 'angular2/testing_internal', 'angular2/platform/browser', 'angular2/common', '../../app/ts/forms/demo_form_with_validations_shorthand'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var testing_1, testing_internal_1, browser_1, common_1, demo_form_with_validations_shorthand_1;
     return {
         setters:[
