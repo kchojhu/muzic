@@ -13,6 +13,8 @@ html, body {
 	font-size:80%;
 	margin: 0;
 	padding: 0;
+    height: 500px;
+    overflow: scroll;
 }
 
 .author {
@@ -22,6 +24,7 @@ html, body {
 
 .music-listing ol {
     cursor: pointer;
+    
 }
 
 .music-listing ol li.selected {
@@ -138,6 +141,9 @@ html, body {
 	float: left;
 	margin-right: -200%;
 	width: 85%;
+	padding: 0;
+	overflow: auto;
+
 }
 
 .pull-right .panel-left {
