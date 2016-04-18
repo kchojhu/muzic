@@ -5,6 +5,7 @@ import { YoutubeService } from '../service/Youtube.service';
 import 'rxjs/Rx';
 
 declare var _:any;
+declare var $: any;
 //test
 @Component({
   selector: 'music-listing',
@@ -16,7 +17,7 @@ declare var _:any;
           </ul>
         </div>
 
-    <div class="music-listing">
+    <div class="music-listing" (window:resize)="onResize($event)" [style.height.px]="height">
         <ol>
             <li *ngFor="#song of songs" [ngClass]="{'music-item':true, selected: song.isSelected}" (click)="selectSong(song)">
                 <p class="title">{{song.songName}}<small class="author"><br>{{song.artistName}}</small></p><img src="{{song.image}}" class="thumb">
@@ -28,14 +29,32 @@ declare var _:any;
 export class MusicListing {
 
     songs:Song[];
+    height:number = 400;
     selectedCountry: string = "Korean";
     currentSong: Song;
     countries: string[] = ["American", "Japanese", "Korean"];
     @Output() selectedSongEvent:EventEmitter<Song> = new EventEmitter<Song>();
     
+    onResize(event?) {
+        console.log('change height');
+        this.height = $(window).height();
+    }
+    
+    ngAfterViewInit() {
+        this.onResize();
+    }    
+    
     ngOnInit() {
         this.getSongs(this.selectedCountry);
     }    
+    
+    getRandomSong(): Song {
+        return this.songs[Math.floor(Math.random() * this.songs.length)];
+    };
+    
+    playRandomSong() {
+        this.selectedSongEvent.next(this.getRandomSong());
+    }
     
     selectNextSong(song:Song) {
         let songIndex:number = song && song.songIndex || 0;

@@ -18,15 +18,24 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             MusicPlayer = (function () {
                 function MusicPlayer() {
                     this.isPlaying = false;
+                    this.isRandomSong = false;
                     this.nextSong = new core_1.EventEmitter();
                     this.togglePlayListEvent = new core_1.EventEmitter();
                 }
+                MusicPlayer.prototype.toggleRandomSong = function () {
+                    this.isRandomSong = !this.isRandomSong;
+                };
                 MusicPlayer.prototype.togglePlayList = function () {
                     console.log('playlist1');
                     this.togglePlayListEvent.emit('toggle playlist');
                 };
                 MusicPlayer.prototype.playNext = function () {
-                    this.nextSong.emit(this.currentSong);
+                    if (this.isRandomSong) {
+                        this.nextSong.emit(null);
+                    }
+                    else {
+                        this.nextSong.emit(this.currentSong);
+                    }
                 };
                 MusicPlayer.prototype.play = function (song) {
                     console.log('play:' + JSON.stringify(song));
@@ -96,7 +105,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     if (event.data === YT.PlayerState.PLAYING) {
                     }
                     if (event.data === YT.PlayerState.ENDED) {
-                        this.nextSong.emit(this.currentSong);
+                        this.playNext();
                     }
                     if (event.data === YT.PlayerState.PAUSED) {
                     }
@@ -130,7 +139,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 MusicPlayer = __decorate([
                     core_1.Component({
                         selector: 'music-player',
-                        template: "\n    <section id=\"video-container\">\n          <button id=\"topListBtn\" (click)=\"togglePlayList()\">&#xf0cb;</button>\n      <div id=\"player\"></div>\n    </section>\n    <section id=\"screen\">\n\n    </section>\n\n    <section id=\"controlsContainer\">\n      <div id=\"playerControls\">\n          <section id=\"songInfo\" class=\"hidden\"></section>\n          <input type=\"range\" id=\"volumeBar\" value=\"50\" max=\"100\" min=\"0\" step=\"0.025\">\n          <button id=\"info\">&#xf129;</button>\n\n          <button id=\"play\" (click)=\"play()\">{{isPlaying ? '&#xf04c;' :'&#xf04b;' }}</button>\n          <button id=\"pause\" class=\"hidden\">&#xf04c;</button>\n          <button id=\"next\" (click)=\"playNext()\">&#xf04e;</button>\n      </div>\n    </section>\n"
+                        template: "\n    <section id=\"video-container\">\n          <button id=\"topListBtn\" (click)=\"togglePlayList()\">&#xf0cb;</button>\n      <div id=\"player\"></div>\n    </section>\n    <section id=\"screen\">\n\n    </section>\n\n    <section id=\"controlsContainer\">\n      <div id=\"playerControls\">\n          <section id=\"songInfo\" class=\"hidden\"></section>\n          <input type=\"range\" id=\"volumeBar\" value=\"50\" max=\"100\" min=\"0\" step=\"0.025\">\n          <button id=\"info\">&#xf129;</button>\n          <button id=\"randomSong\" [ngClass]=\"{active:isRandomSong}\" (click)=\"toggleRandomSong()\">&#xf074;</button>\n          <button id=\"play\" (click)=\"play()\">{{isPlaying ? '&#xf04c;' :'&#xf04b;' }}</button>\n          <button id=\"pause\" class=\"hidden\">&#xf04c;</button>\n          <button id=\"next\" (click)=\"playNext()\">&#xf04e;</button>\n      </div>\n    </section>\n"
                     })
                 ], MusicPlayer);
                 return MusicPlayer;

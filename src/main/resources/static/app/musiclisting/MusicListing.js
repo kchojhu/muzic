@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/core', '../service/Youtube.service', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -7,12 +7,18 @@ System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
-    var core_1;
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
+    var core_1, Youtube_service_1;
     var MusicListing;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (Youtube_service_1_1) {
+                Youtube_service_1 = Youtube_service_1_1;
             },
             function (_1) {}],
         execute: function() {
@@ -20,6 +26,7 @@ System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
             MusicListing = (function () {
                 function MusicListing(_youtubeService) {
                     this._youtubeService = _youtubeService;
+                    this.height = 400;
                     this.selectedCountry = "Korean";
                     this.countries = ["American", "Japanese", "Korean"];
                     this.selectedSongEvent = new core_1.EventEmitter();
@@ -34,8 +41,22 @@ System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
                     this.songs.push(song2);
                     this.songs.push(song3);*/
                 }
+                MusicListing.prototype.onResize = function (event) {
+                    console.log('change height');
+                    this.height = $(window).height();
+                };
+                MusicListing.prototype.ngAfterViewInit = function () {
+                    this.onResize();
+                };
                 MusicListing.prototype.ngOnInit = function () {
                     this.getSongs(this.selectedCountry);
+                };
+                MusicListing.prototype.getRandomSong = function () {
+                    return this.songs[Math.floor(Math.random() * this.songs.length)];
+                };
+                ;
+                MusicListing.prototype.playRandomSong = function () {
+                    this.selectedSongEvent.next(this.getRandomSong());
                 };
                 MusicListing.prototype.selectNextSong = function (song) {
                     var songIndex = song && song.songIndex || 0;
@@ -64,13 +85,15 @@ System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
                     }, function (err) { return console.log(err); });
                 };
                 __decorate([
-                    core_1.Output()
+                    core_1.Output(), 
+                    __metadata('design:type', core_1.EventEmitter)
                 ], MusicListing.prototype, "selectedSongEvent", void 0);
                 MusicListing = __decorate([
                     core_1.Component({
                         selector: 'music-listing',
-                        template: "\n        <div class=\"dropdown country-dropdown\">\n            <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">{{selectedCountry}}&nbsp;&nbsp;&nbsp;<span class=\"caret\"></span></button>\n          <ul class=\"dropdown-menu\">\n            <li *ngFor=\"#country of countries\"><a href=\"#\" (click)=\"selectCountry(country)\" >{{country}}</a></li>\n          </ul>\n        </div>\n\n    <div class=\"music-listing\">\n        <ol>\n            <li *ngFor=\"#song of songs\" [ngClass]=\"{'music-item':true, selected: song.isSelected}\" (click)=\"selectSong(song)\">\n                <p class=\"title\">{{song.songName}}<small class=\"author\"><br>{{song.artistName}}</small></p><img src=\"{{song.image}}\" class=\"thumb\">\n            </li>\n        </ol>\n    </div>\n"
-                    })
+                        template: "\n        <div class=\"dropdown country-dropdown\">\n            <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">{{selectedCountry}}&nbsp;&nbsp;&nbsp;<span class=\"caret\"></span></button>\n          <ul class=\"dropdown-menu\">\n            <li *ngFor=\"#country of countries\"><a href=\"#\" (click)=\"selectCountry(country)\" >{{country}}</a></li>\n          </ul>\n        </div>\n\n    <div class=\"music-listing\" (window:resize)=\"onResize($event)\" [style.height.px]=\"height\">\n        <ol>\n            <li *ngFor=\"#song of songs\" [ngClass]=\"{'music-item':true, selected: song.isSelected}\" (click)=\"selectSong(song)\">\n                <p class=\"title\">{{song.songName}}<small class=\"author\"><br>{{song.artistName}}</small></p><img src=\"{{song.image}}\" class=\"thumb\">\n            </li>\n        </ol>\n    </div>\n"
+                    }), 
+                    __metadata('design:paramtypes', [Youtube_service_1.YoutubeService])
                 ], MusicListing);
                 return MusicListing;
             }());

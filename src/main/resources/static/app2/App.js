@@ -8,9 +8,6 @@ System.register(['angular2/platform/browser', 'angular2/core', './musiclisting/M
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
-    var __metadata = (this && this.__metadata) || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-    };
     var browser_1, core_1, MusicListing_1, MusicPlayer_component_1, http_1, Youtube_service_1;
     var App;
     return {
@@ -53,7 +50,12 @@ System.register(['angular2/platform/browser', 'angular2/core', './musiclisting/M
                     // event.preventDefault(); 
                 };
                 App.prototype.nextSongEvent = function (currentSong) {
-                    this.musicList.selectNextSong(currentSong);
+                    if (currentSong) {
+                        this.musicList.selectNextSong(currentSong);
+                    }
+                    else {
+                        this.musicList.playRandomSong();
+                    }
                 };
                 App.prototype.selectedSongEvent = function (song) {
                     console.log('song emitted:' + JSON.stringify(song));
@@ -89,12 +91,10 @@ System.register(['angular2/platform/browser', 'angular2/core', './musiclisting/M
                     */
                 };
                 __decorate([
-                    core_1.ViewChild(MusicPlayer_component_1.MusicPlayer), 
-                    __metadata('design:type', MusicPlayer_component_1.MusicPlayer)
+                    core_1.ViewChild(MusicPlayer_component_1.MusicPlayer)
                 ], App.prototype, "musicPlayer", void 0);
                 __decorate([
-                    core_1.ViewChild(MusicListing_1.MusicListing), 
-                    __metadata('design:type', MusicListing_1.MusicListing)
+                    core_1.ViewChild(MusicListing_1.MusicListing)
                 ], App.prototype, "musicList", void 0);
                 App = __decorate([
                     core_1.Component({
@@ -102,8 +102,7 @@ System.register(['angular2/platform/browser', 'angular2/core', './musiclisting/M
                         selector: 'hello-world',
                         directives: [MusicListing_1.MusicListing, MusicPlayer_component_1.MusicPlayer],
                         template: "\n<div id=\"swipeme\" class=\"main\">\n    <div id=\"swipeme-main\" class=\"panel panel-main\">\n           <music-player (nextSong)=\"nextSongEvent($event)\" (togglePlayListEvent)=\"togglePlayList($event)\"></music-player>\n    </div>\n    <div id=\"swipeme-right\" class=\"panel panel-right\">\n        <music-listing (selectedSongEvent)=\"selectedSongEvent($event)\"></music-listing>\n    </div>\n</div>\n  "
-                    }), 
-                    __metadata('design:paramtypes', [])
+                    })
                 ], App);
                 return App;
             }());

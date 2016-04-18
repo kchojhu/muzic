@@ -49,8 +49,12 @@ export class App implements AfterViewInit {
        // event.preventDefault(); 
     }
 
-    nextSongEvent(currentSong: Song) {
-        this.musicList.selectNextSong(currentSong);
+    nextSongEvent(currentSong?: Song) {
+        if (currentSong) {
+            this.musicList.selectNextSong(currentSong);            
+        } else {
+            this.musicList.playRandomSong();
+        }
     }
 
     selectedSongEvent(song: Song) {

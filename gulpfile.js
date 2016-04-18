@@ -34,7 +34,7 @@ gulp.task('serve', function() {
 	var options = {
 			proxy: 'localhost:8080',
 			port: 4000,
-			files:['src/main/resources/webapp/index.html', 'target/classes/**/*.class', 'target/classes/**/*.js', 'target/classes/**/*.css'],
+			files:['src/main/resources/static/index.html', 'target/classes/**/*.class', 'target/classes/**/*.js', 'target/classes/**/*.css'],
 			reloadDelay:500,
 			logLevel: 'debug',
 			injectChange: true,
@@ -47,8 +47,8 @@ gulp.task('serve', function() {
 	browserSync(options);
 	
 	//gulp.watch([].concat.apply(config.indexFile), browserSync.reload);
-//	gulp.watch(['src/main/webapp/app/**/*.js'], function() {
-//		browserSync.reload({stream:false});
-//	});
+	gulp.watch(['src/main/resources/static/index.html', 'target/classes/**/*.class', 'target/classes/**/*.js'], function() {
+		browserSync.reload({stream:false});
+	});
 });
 

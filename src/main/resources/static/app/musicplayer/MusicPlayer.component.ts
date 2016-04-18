@@ -18,6 +18,7 @@ import { Song } from '../model/Song';
           <button id="topListBtn">&#xf0cb;</button>
           <button id="dontPlay">&#xf165;</button>
 
+
 */
 declare var YT: any;
 declare var $: any;
@@ -37,7 +38,7 @@ declare var $: any;
           <section id="songInfo" class="hidden"></section>
           <input type="range" id="volumeBar" value="50" max="100" min="0" step="0.025">
           <button id="info">&#xf129;</button>
-
+          <button id="randomSong" [ngClass]="{active:isRandomSong}" (click)="toggleRandomSong()">&#xf074;</button>
           <button id="play" (click)="play()">{{isPlaying ? '&#xf04c;' :'&#xf04b;' }}</button>
           <button id="pause" class="hidden">&#xf04c;</button>
           <button id="next" (click)="playNext()">&#xf04e;</button>
@@ -49,20 +50,29 @@ export class MusicPlayer {
     player: any;
     playerEl: any;
     isPlaying: boolean = false;
+    isRandomSong: boolean = false;
     currentSong: Song;
     @Output() nextSong: EventEmitter<Song> = new EventEmitter<Song>();
-    @Output() togglePlayListEvent: EventEmitter<string> = new EventEmitter<string>();    
+    @Output() togglePlayListEvent: EventEmitter<string> = new EventEmitter<string>();
 
+    toggleRandomSong() {
+        this.isRandomSong = !this.isRandomSong; 
+    }
+    
     togglePlayList() {
         console.log('playlist1');
-        
+
         this.togglePlayListEvent.emit('toggle playlist');
     }
 
 
     playNext() {
-        this.nextSong.emit(this.currentSong);
-        
+        if (this.isRandomSong) {
+           this.nextSong.emit(null);
+        } else {
+           this.nextSong.emit(this.currentSong);
+        }
+
     }
 
     play(song?: Song) {
@@ -140,7 +150,7 @@ export class MusicPlayer {
 
         }
         if (event.data === YT.PlayerState.ENDED) {
-            this.nextSong.emit(this.currentSong);
+            this.playNext();
         }
         if (event.data === YT.PlayerState.PAUSED) {
         }
@@ -151,6 +161,7 @@ export class MusicPlayer {
         let width = $(window).width();
         let height = $(window).height();
         let ratio = 16 / 9;
+
         if (width / ratio < height) {
             pWidth = Math.ceil(height * ratio);
             return this.playerEl.width(pWidth).height(height).css({
@@ -164,6 +175,7 @@ export class MusicPlayer {
                 top: (height - pHeight) / 2
             });
         }
+
     }
 
     constructor() {
