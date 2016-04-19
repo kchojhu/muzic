@@ -29,14 +29,13 @@ gulp.task('default', ['help']);
 //                        .pipe(sourcemaps.write('.'))
 //                        .pipe(gulp.dest(config.tsOutputPath));
 //});
-
+//			files:['src/main/resources/webapp/index.html', 'target/classes/**/*.class', 'src/main/resources/webapp/app/**/*.js', 'src/main/resources/public/**/*.css'],
 gulp.task('serve', function() {
 	var options = {
 			proxy: 'localhost:8080',
 			port: 4000,
-			files:['src/main/webapp/index.html', 'target/classes/**/*.class', 'src/main/webapp/app/**/*.js', 'src/main/resources/public/**/*.css'],
-			reloadDelay:2000,
-			browser: 'firefox',
+			files:['src/main/resources/static/index.html', 'target/classes/**/*.class', 'target/classes/**/*.js', 'target/classes/**/*.css'],
+			reloadDelay:500,
 			logLevel: 'debug',
 			injectChange: true,
 			logFileChange: true,
@@ -44,11 +43,11 @@ gulp.task('serve', function() {
 			notify:true
 	};
 //	browsers: 'google chrome',
-
+//	browser: 'firefox',
 	browserSync(options);
 	
 	//gulp.watch([].concat.apply(config.indexFile), browserSync.reload);
-	gulp.watch(['src/main/webapp/app/**/*.js'], function() {
+	gulp.watch(['src/main/resources/static/index.html', 'target/classes/**/*.class', 'target/classes/**/*.js'], function() {
 		browserSync.reload({stream:false});
 	});
 });

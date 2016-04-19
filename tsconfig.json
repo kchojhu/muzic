@@ -10,11 +10,14 @@
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true
   },
+  "include": ["target/classes/static/app"],
   "exclude": [
     "node_modules",
-    "src/main/webapp/code",
-    "src/main/webapp/app2",
+    "src/main/resources/static/node_modules",
+    "src/main/resources/static/code",
+    "src/main/resources/static/app2",
     "typings/main",
-    "typings/main.d.ts"
+    "typings/main.d.ts",
+    "target"
   ]
 }

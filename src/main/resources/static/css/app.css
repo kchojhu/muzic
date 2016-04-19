@@ -1,0 +1,198 @@
+html, body {
+	background: #000;
+	height: 100%;
+	width: 100%;
+}
+/*
+.music-listing .dropdown {
+    padding: 10px 0 0 20px;
+}
+*/
+.music-listing {
+	background-color: #222;
+	font-size:80%;
+	margin: 0;
+	padding: 0;
+    height: 500px;
+    overflow: scroll;
+}
+
+.author {
+	color: green;
+	font-weight: bold;
+}
+
+.music-listing ol {
+    cursor: pointer;
+    
+}
+
+.music-listing ol li.selected {
+    background-color: #3a3a3a;
+}
+
+.music-listing ol li:hover {
+    background-color: #3a3a3a;
+}
+
+
+.music-listing ol li {
+    position: relative;
+    vertical-align: middle;
+//    overflow: hidden;
+    padding: 12px 0 12px 12px;
+    color: #fff;
+}
+
+.music-listing ol li > p {
+	color: #cacaca;
+    display: inline-block;
+    float: right;
+    margin: 0;
+    padding: 0 5px 0 0;
+    text-align: left;
+    vertical-align: middle;
+    width: 76%;
+}
+
+.music-listing ol li > img {
+    border: 2px solid transparent;
+    display: inline-block;
+    vertical-align: middle;
+    width: 18%;
+}
+
+.country-dropdown {
+    width: 100%;
+    height: 64px;
+    padding: 16px 0 0 8px;
+    background: #222;
+    border-left: 8px solid #222;
+    border-right: 8px solid #222;
+    border-bottom: 1px solid #3a3a3a;
+    z-index: 2;
+}
+
+/*
+.RYPP .RYPP-playlist > header {
+    background: #222 none repeat scroll 0 0;
+    border-bottom: 1px solid #3a3a3a;
+    border-left: 8px solid #222;
+    border-right: 8px solid #222;
+    height: 64px;
+    padding: 16px 0 0 8px;
+    width: 100%;
+    z-index: 2;
+}*/
+
+/*.music-listing {
+    width: 100%;
+    
+    border: 5px solid red; 
+    position: absolute;
+    left: 0;
+    top: 64px;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}*/
+
+
+.main {
+	position: relative;
+//	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	background-color: 000;
+	font-size: 130%;
+	margin: 0;
+	padding: 0;
+}
+.panel {
+	padding: 20px;
+	min-height: 100%;
+	-webkit-transition: margin 0.4s ease-out;
+	-moz-transition: margin 0.4s ease-out;
+	-o-transition: margin 0.4s ease-out;
+	transition: margin 0.4s ease-out;
+}
+
+.panel-left {
+	float: left;
+	width: 85%;
+	margin-left: -100%;
+}
+
+.panel-main {
+	position: relative;
+	background: #000;
+	float: left;
+	width: 100%;
+	margin-left: 0;
+	padding: 0;
+}
+
+.panel-main .contents {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+.panel-right {
+	float: left;
+	margin-right: -200%;
+	width: 85%;
+	padding: 0;
+	overflow: auto;
+
+}
+
+.pull-right .panel-left {
+	margin-left: 0;
+}
+
+.pull-right .panel-main {
+	margin-right: -100%;
+}
+
+.pull-right .panel-right {
+	margin-left: 100%;
+}
+
+.pull-left .panel-left {
+	margin-left: -100%;
+}
+
+.pull-left .panel-main {
+	margin-left: -85%;
+}
+
+.pull-left .panel-right {
+	margin-left: 0;
+}
+
+/*
+@media screen and (max-width: 600px) {
+	code, pre {
+		font-size: 50%;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.trigger-left {
+		display: block;
+	}
+	.trigger-right {
+		display: block;
+	}
+
+	.panel-left {
+		width: 25%;
+		margin-left: -25%;
+	}
+	.panel-right {
+		width: 25%;
+	}
+	.pull-left .panel-main {
+		margin-left: -25%;
+	}
+}*/

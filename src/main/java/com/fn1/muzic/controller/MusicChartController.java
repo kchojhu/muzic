@@ -26,6 +26,10 @@ public class MusicChartController {
 	private MusicChartSerice jPopService;
 
 	@Autowired
+	@Qualifier("mellonService")
+	private MusicChartSerice mellonService;
+	
+	@Autowired
 	@Qualifier("ituneService")
 	private MusicChartSerice ituneService;
 	
@@ -38,6 +42,8 @@ public class MusicChartController {
 			return usPopService.getSongs();
 		case "Japanese":
 			return jPopService.getSongs();
+		case "Dance":
+			return mellonService.getSongs(country);
 		}
 		return null;
 	}
