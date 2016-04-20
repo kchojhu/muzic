@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', 'rxjs/add/operator/map'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'rxjs/add/operator/map'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -15,10 +15,10 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', 'rxjs/add/operator
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (_1) {},
             function (http_1_1) {
                 http_1 = http_1_1;
             },
+            function (_1) {},
             function (_2) {}],
         execute: function() {
             //test123
@@ -26,9 +26,14 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', 'rxjs/add/operator
                 function YoutubeService(_http) {
                     this._http = _http;
                 }
-                YoutubeService.prototype.getSongs = function (country) {
-                    return this._http.get('/chart/top100?country=' + country).map(function (response) {
+                YoutubeService.prototype.getSongs = function (musicItem) {
+                    return this._http.get('/chart/top100?country=' + musicItem.value).map(function (response) {
                         return response.json().songs;
+                    });
+                };
+                YoutubeService.prototype.getDropdown = function () {
+                    return this._http.get('/chart/musicDropdown').map(function (response) {
+                        return response.json();
                     });
                 };
                 YoutubeService = __decorate([

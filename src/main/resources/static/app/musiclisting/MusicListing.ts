@@ -1,6 +1,7 @@
 
-import { Component, Inject, Output, EventEmitter } from 'angular2/core';
+import { Component, Inject, Output, EventEmitter  } from 'angular2/core';
 import { Song } from '../model/Song';
+import { MusicItem } from '../model/MusicItem';
 import { YoutubeService } from '../service/Youtube.service';
 import 'rxjs/Rx';
 
@@ -11,9 +12,9 @@ declare var $: any;
   selector: 'music-listing',
   template: `
         <div class="dropdown country-dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedCountry}}&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedMusicItem.name}}&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li *ngFor="#country of countries"><a href="#" (click)="selectCountry(country)" >{{country}}</a></li>
+            <li *ngFor="#musicItem of musicItems"><a href="#" (click)="selectMusicItem(musicItem)" >{{musicItem.name}}</a></li>
           </ul>
         </div>
 
@@ -30,9 +31,9 @@ export class MusicListing {
 
     songs:Song[];
     height:number = 400;
-    selectedCountry: string = "Korean";
+    selectedMusicItem: MusicItem = new MusicItem("Korean", "Korean");
     currentSong: Song;
-    countries: string[] = ["American", "Japanese", "Korean", "Dance"];
+    musicItems: MusicItem[];
     @Output() selectedSongEvent:EventEmitter<Song> = new EventEmitter<Song>();
     
     onResize(event?) {
@@ -45,7 +46,7 @@ export class MusicListing {
     }    
     
     ngOnInit() {
-        this.getSongs(this.selectedCountry);
+        this.getMusicListings();                
     }    
     
     getRandomSong(): Song {
@@ -71,13 +72,20 @@ export class MusicListing {
         
     }
     
-    selectCountry(country:string) {
-        this.selectedCountry = country;
-        this.getSongs(country);
+    selectMusicItem(musicItem:MusicItem) {
+        this.selectedMusicItem = musicItem;
+        this.getSongs(musicItem);
     }
     
-    getSongs(country:string) {
-        this._youtubeService.getSongs(country).subscribe(songs => {
+    getMusicListings() {
+        this._youtubeService.getDropdown().subscribe(musicItems => {
+            this.musicItems = musicItems;
+            this.getSongs(this.musicItems[0]);
+        }, err => console.log(err));
+     }
+    
+    getSongs(musicItem:MusicItem) {
+        this._youtubeService.getSongs(musicItem).subscribe(songs => {
          let songIndex = 0;
          _.each(songs, (song) => song.songIndex = songIndex++);
          this.songs = songs;

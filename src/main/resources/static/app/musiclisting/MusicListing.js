@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../service/Youtube.service', 'rxjs/Rx'], function(exports_1) {
+System.register(['angular2/core', '../model/MusicItem', '../service/Youtube.service', 'rxjs/Rx'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,15 @@ System.register(['angular2/core', '../service/Youtube.service', 'rxjs/Rx'], func
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Youtube_service_1;
+    var core_1, MusicItem_1, Youtube_service_1;
     var MusicListing;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (MusicItem_1_1) {
+                MusicItem_1 = MusicItem_1_1;
             },
             function (Youtube_service_1_1) {
                 Youtube_service_1 = Youtube_service_1_1;
@@ -25,8 +28,7 @@ System.register(['angular2/core', '../service/Youtube.service', 'rxjs/Rx'], func
                 function MusicListing(_youtubeService) {
                     this._youtubeService = _youtubeService;
                     this.height = 400;
-                    this.selectedCountry = "Korean";
-                    this.countries = ["American", "Japanese", "Korean", "Dance"];
+                    this.selectedMusicItem = new MusicItem_1.MusicItem("Korean", "Korean");
                     this.selectedSongEvent = new core_1.EventEmitter();
                     //        this.songs = [];
                     /*
@@ -47,7 +49,7 @@ System.register(['angular2/core', '../service/Youtube.service', 'rxjs/Rx'], func
                     this.onResize();
                 };
                 MusicListing.prototype.ngOnInit = function () {
-                    this.getSongs(this.selectedCountry);
+                    this.getMusicListings();
                 };
                 MusicListing.prototype.getRandomSong = function () {
                     return this.songs[Math.floor(Math.random() * this.songs.length)];
@@ -68,13 +70,20 @@ System.register(['angular2/core', '../service/Youtube.service', 'rxjs/Rx'], func
                     this.currentSong.isSelected = true;
                     this.selectedSongEvent.next(song);
                 };
-                MusicListing.prototype.selectCountry = function (country) {
-                    this.selectedCountry = country;
-                    this.getSongs(country);
+                MusicListing.prototype.selectMusicItem = function (musicItem) {
+                    this.selectedMusicItem = musicItem;
+                    this.getSongs(musicItem);
                 };
-                MusicListing.prototype.getSongs = function (country) {
+                MusicListing.prototype.getMusicListings = function () {
                     var _this = this;
-                    this._youtubeService.getSongs(country).subscribe(function (songs) {
+                    this._youtubeService.getDropdown().subscribe(function (musicItems) {
+                        _this.musicItems = musicItems;
+                        _this.getSongs(_this.musicItems[0]);
+                    }, function (err) { return console.log(err); });
+                };
+                MusicListing.prototype.getSongs = function (musicItem) {
+                    var _this = this;
+                    this._youtubeService.getSongs(musicItem).subscribe(function (songs) {
                         var songIndex = 0;
                         _.each(songs, function (song) { return song.songIndex = songIndex++; });
                         _this.songs = songs;
@@ -89,7 +98,7 @@ System.register(['angular2/core', '../service/Youtube.service', 'rxjs/Rx'], func
                 MusicListing = __decorate([
                     core_1.Component({
                         selector: 'music-listing',
-                        template: "\n        <div class=\"dropdown country-dropdown\">\n            <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">{{selectedCountry}}&nbsp;&nbsp;&nbsp;<span class=\"caret\"></span></button>\n          <ul class=\"dropdown-menu\">\n            <li *ngFor=\"#country of countries\"><a href=\"#\" (click)=\"selectCountry(country)\" >{{country}}</a></li>\n          </ul>\n        </div>\n\n    <div class=\"music-listing\" (window:resize)=\"onResize($event)\" [style.height.px]=\"height\">\n        <ol>\n            <li *ngFor=\"#song of songs\" [ngClass]=\"{'music-item':true, selected: song.isSelected}\" (click)=\"selectSong(song)\">\n                <p class=\"title\">{{song.songName}}<small class=\"author\"><br>{{song.artistName}}</small></p><img src=\"{{song.image}}\" class=\"thumb\">\n            </li>\n        </ol>\n    </div>\n"
+                        template: "\n        <div class=\"dropdown country-dropdown\">\n            <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">{{selectedMusicItem.name}}&nbsp;&nbsp;&nbsp;<span class=\"caret\"></span></button>\n          <ul class=\"dropdown-menu\">\n            <li *ngFor=\"#musicItem of musicItems\"><a href=\"#\" (click)=\"selectMusicItem(musicItem)\" >{{musicItem.name}}</a></li>\n          </ul>\n        </div>\n\n    <div class=\"music-listing\" (window:resize)=\"onResize($event)\" [style.height.px]=\"height\">\n        <ol>\n            <li *ngFor=\"#song of songs\" [ngClass]=\"{'music-item':true, selected: song.isSelected}\" (click)=\"selectSong(song)\">\n                <p class=\"title\">{{song.songName}}<small class=\"author\"><br>{{song.artistName}}</small></p><img src=\"{{song.image}}\" class=\"thumb\">\n            </li>\n        </ol>\n    </div>\n"
                     }), 
                     __metadata('design:paramtypes', [Youtube_service_1.YoutubeService])
                 ], MusicListing);
