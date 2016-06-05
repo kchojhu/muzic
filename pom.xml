@@ -6,7 +6,7 @@
 	<groupId>com.fn1</groupId>
 	<artifactId>muzic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>muzic</name>
 	<description>FN1 Music App</description>
@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -74,6 +74,7 @@
 			<artifactId>google-api-client</artifactId>
 			<version>1.20.0</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>

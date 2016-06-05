@@ -22,9 +22,14 @@ System.register(['angular2/core', 'rxjs/Rx', 'rxjs/add/operator/map'], function(
                 function YoutubeService(_http) {
                     this._http = _http;
                 }
-                YoutubeService.prototype.getSongs = function (country) {
-                    return this._http.get('/chart/top100?country=' + country).map(function (response) {
+                YoutubeService.prototype.getSongs = function (musicItem) {
+                    return this._http.get('/chart/top100?country=' + musicItem.value).map(function (response) {
                         return response.json().songs;
+                    });
+                };
+                YoutubeService.prototype.getDropdown = function () {
+                    return this._http.get('/chart/musicDropdown').map(function (response) {
+                        return response.json();
                     });
                 };
                 YoutubeService = __decorate([

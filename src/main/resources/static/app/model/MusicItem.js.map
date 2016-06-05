@@ -1,1 +1,1 @@
-{"version":3,"file":"MusicItem.js","sourceRoot":"","sources":["MusicItem.ts"],"names":["MusicItem","MusicItem.constructor"],"mappings":";;;;;YAAA;gBAEIA,mBAAmBA,IAAYA,EACxBA,KAAaA;oBADDC,SAAIA,GAAJA,IAAIA,CAAQA;oBACxBA,UAAKA,GAALA,KAAKA,CAAQA;gBAEpBA,CAACA;gBAGLD,gBAACA;YAADA,CAACA,AARD,IAQC;YARD,iCAQC,CAAA"}
+{"version":3,"file":"MusicItem.js","sourceRoot":"","sources":["MusicItem.ts"],"names":[],"mappings":";;;;;;;YAAA;gBAEI,mBAAmB,IAAY,EACxB,KAAa;oBADD,SAAI,GAAJ,IAAI,CAAQ;oBACxB,UAAK,GAAL,KAAK,CAAQ;gBAEpB,CAAC;gBAGL,gBAAC;YAAD,CAAC,AARD,IAQC;YARD,iCAQC,CAAA"}

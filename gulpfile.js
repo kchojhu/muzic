@@ -35,7 +35,7 @@ gulp.task('serve', function() {
 			proxy: 'localhost:8080',
 			port: 4000,
 			files:['src/main/resources/static/index.html', 'target/classes/**/*.class', 'target/classes/**/*.js', 'target/classes/**/*.css'],
-			reloadDelay:500,
+			reloadDelay:5000,
 			logLevel: 'debug',
 			injectChange: true,
 			logFileChange: true,

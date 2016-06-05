@@ -40,5 +40,8 @@
     "systemjs": "^0.19.24",
     "yargs": "^4.3.2",
     "zone.js": "~0.6.4"
+  },
+  "dependencies": {
+    "gsap": "^1.18.3"
   }
 }
